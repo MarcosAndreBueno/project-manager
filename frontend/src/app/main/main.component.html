@@ -10,7 +10,7 @@
                 <a class="nav-link" href="kanban">Kanban</a>
             </li>
             <li class="nav-item col-4">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Tickets</a>
             </li>
         </ul>
 
@@ -23,8 +23,24 @@
                 </form>
             </li>
         </ul>
-
     </div>
 </nav>
 
-<router-outlet></router-outlet>
+<div class="container-fluid">
+    <div class="row">
+        <section class="col-2 sidebar-center">
+            <nav class="mt-2">
+                <a href="" class="d-block sidebar-anchor">Profile</a>
+                <a href="" class="d-block sidebar-anchor">Create Project</a>
+                <a href="" class="d-block sidebar-anchor">Create Ticket</a>
+                <a href="" class="d-block sidebar-anchor">Dashboard</a>
+                <a href="" class="d-block sidebar-anchor">Teams</a>
+                <a href="" class="d-block sidebar-anchor">About</a>
+                <a href="" class="d-block sidebar-anchor">Config</a>
+            </nav>
+        </section>
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
