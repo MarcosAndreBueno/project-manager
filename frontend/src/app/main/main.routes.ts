@@ -4,8 +4,14 @@ import { MainComponent } from "./main.component";
 import { KanbanComponent } from "./kanban/kanban.component";
 
 const routes: Routes = [
-    { path: '', component: MainComponent },
-    { path: 'kanban', component: KanbanComponent}
+    {
+        path: '', component: MainComponent,
+        children: [
+            {
+                path: 'kanban',
+                loadComponent: () => import('./kanban/kanban.component').then(c => c.KanbanComponent)
+            }],
+    }
 ];
 
 @NgModule({
