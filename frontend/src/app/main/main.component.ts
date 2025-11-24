@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'main-component',
+    selector: 'app-main',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss']
 }) export class MainComponent {
