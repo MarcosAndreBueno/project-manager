@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { MainComponent } from './main/main.component';
 
-export const routes: Routes = [
+export const routeConfig: Routes = [
     {
-        path: '',
-        loadChildren: () => import('./main/main.module').then(m => m.MainModule)
-    }
+        path: '', component: MainComponent,
+        children: [
+            {
+                path: 'kanban', loadComponent: () => import('./main/kanban/kanban.component').then(c => c.KanbanComponent)
+            }
+        ]
+    },
 ];
 
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-}) export class AppRoutingModule { }
+export default routeConfig;
