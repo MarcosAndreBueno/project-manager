@@ -13,5 +13,11 @@ import { CommonModule } from "@angular/common";
     imports: [CommonModule, RouterModule]
 }) export class MainComponent {
 
+    sidebar = true;
+
     constructor() { }
+
+    toggleSidebar() {
+        this.sidebar = !this.sidebar;
+    }
 }
