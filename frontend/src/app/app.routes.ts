@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { TicketComponent } from './main/ticket/ticket.component';
+import { TickerDetailsComponent } from './main/ticket/ticker-details/ticker-details.component';
 
 export const routeConfig: Routes = [
     {
@@ -11,6 +12,9 @@ export const routeConfig: Routes = [
             },
             {
                 path: 'ticket', loadComponent: () => import('./main/ticket/ticket.component').then(c => TicketComponent)
+            },
+            {
+                path: 'ticket-details', loadComponent: () => import('./main/ticket/ticker-details/ticker-details.component').then(c => TickerDetailsComponent)
             }
         ]
     },
