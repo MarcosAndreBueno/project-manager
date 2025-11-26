@@ -3,15 +3,14 @@ import { Ticket } from "../entities/ticket";
 import { User_1 } from "./user.mock";
 import { formatDate } from "@angular/common";
 
-const ticketDetail_1: Ticket = {
-    id: 1,
-    title: 'Ticket 1',
-    description: 'Description of ticket 1',
-    status: TicketStatusEnums.IN_PROGRESS,
+const ticketDetail_3: Ticket = {
+    id: 3,
+    title: 'Ticket 1.2',
+    description: 'Description of ticket 1.2',
+    status: TicketStatusEnums.OPEN,
     createdBy: User_1,
     createdIn: new Date(),
-    idChildTicket: 2,
-    
+    childTickets: [],
 };
 
 const ticketDetail_2: Ticket = {
@@ -21,7 +20,18 @@ const ticketDetail_2: Ticket = {
     status: TicketStatusEnums.IN_PROGRESS,
     createdBy: User_1,
     createdIn: new Date(),
-    idChildTicket: undefined,
+    childTickets: [],
 };
 
-export const tickets = [ticketDetail_1, ticketDetail_2];
+const ticketDetail_1: Ticket = {
+    id: 1,
+    title: 'Ticket 1',
+    description: 'Description of ticket 1',
+    status: TicketStatusEnums.IN_PROGRESS,
+    createdBy: User_1,
+    createdIn: new Date(),
+    childTickets: [ticketDetail_2, ticketDetail_3],
+    
+};
+
+export const tickets = [ticketDetail_1, ticketDetail_2, ticketDetail_3];
