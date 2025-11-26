@@ -1,3 +1,8 @@
-<p>ticket works</p>
+<div *ngFor="let ticket of ticketList">
+    <p> {{ ticket.id }} </p>
+    <p> {{ ticket.title }} </p>
+    <p> {{ ticket.description }} </p>
+    <p> {{ ticket.createdIn }} </p>
+</div>
 
 <a href="ticket-details">Ticket 1</a>
