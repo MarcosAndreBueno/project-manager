@@ -3,6 +3,5 @@
     <p> {{ ticket.title }} </p>
     <p> {{ ticket.description }} </p>
     <p> {{ ticket.createdIn }} </p>
+    <a [routerLink]="['/ticket-details', ticket.id]">Ticket {{ ticket.id }}</a>
 </div>
-
-<a href="ticket-details">Ticket 1</a>
