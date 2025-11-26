@@ -9,4 +9,4 @@ export interface Ticket {
     createdBy: User,
     createdIn: Date,
     childTickets: Ticket[],
-}
+};

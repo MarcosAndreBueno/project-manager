@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { tickets } from '../../mock/tickets-details.mock';
 import { Ticket } from '../../entities/ticket';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { RouterModule } from "@angular/router";
 
 @Component({
@@ -12,10 +12,15 @@ import { RouterModule } from "@angular/router";
   styleUrl: './ticket.component.scss'
 })
 export class TicketComponent {
+
   ticketList: Ticket[];
   descriptionLimit: number = 50;
 
   constructor() {
     this.ticketList = tickets;
+  }
+
+  formatDate(date: Date) {
+    return formatDate(date, "yyyy-MM-dd hh:mm:ss z", "en-US");
   }
 }
