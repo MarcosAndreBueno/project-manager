@@ -13,6 +13,7 @@ import { RouterModule } from "@angular/router";
 })
 export class TicketComponent {
   ticketList: Ticket[];
+  descriptionLimit: number = 50;
 
   constructor() {
     this.ticketList = tickets;

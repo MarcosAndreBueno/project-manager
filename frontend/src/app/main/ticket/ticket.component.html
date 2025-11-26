@@ -1,7 +1,16 @@
-<div *ngFor="let ticket of ticketList">
-    <p> {{ ticket.id }} </p>
-    <p> {{ ticket.title }} </p>
-    <p> {{ ticket.description }} </p>
-    <p> {{ ticket.createdIn }} </p>
-    <a [routerLink]="['/ticket-details', ticket.id]">Ticket {{ ticket.id }}</a>
-</div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="border mt-3 me-3 col-3" *ngFor="let ticket of ticketList">
+                <p>{{ ticket.id }}</p>
+                <h3 class="text-center">
+                    <a [routerLink]="['/ticket-details', ticket.id]">
+                        {{ ticket.title }}
+                    </a>
+                </h3>
+                <p class="mt-3"> {{ ticket.description.substring(0, descriptionLimit ) }} </p>
+                <p class="mt-3"> {{ ticket.createdIn }} </p>
+            </div>
+        </div>
+    </div>
+</section>
