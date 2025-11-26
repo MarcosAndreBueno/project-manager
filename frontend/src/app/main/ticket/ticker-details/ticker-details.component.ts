@@ -3,6 +3,7 @@ import { Ticket } from '../../../entities/ticket';
 import { tickets } from '../../../mock/tickets-details.mock';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TicketStatusEnums } from '../../../enums/ticket-status';
 
 @Component({
   selector: 'app-ticker-details',
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './ticker-details.component.scss'
 })
 export class TickerDetailsComponent implements OnInit {
-  ticket$?: Ticket;
+  public ticket$?: Ticket;
+  public statusEnums?: TicketStatusEnums[];
 
   constructor(private route: ActivatedRoute) {
   }
@@ -22,5 +24,14 @@ export class TickerDetailsComponent implements OnInit {
       const id = Number(params.get('id'));
       this.ticket$ = tickets.find(t => t.id === id)!;
     });
+
+    this.statusEnums = Object.values(TicketStatusEnums);
+    console.log(this.statusEnums)
+  }
+
+  public changeStatus(status: TicketStatusEnums): void {
+    if (this.ticket$) {
+      this.ticket$.status = status;
+    }
   }
 }

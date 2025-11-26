@@ -24,11 +24,20 @@
                 </div>
             </div>
             <div class="col-4 mt-5">
-                <div class="mt-3 d-flex">
+                <div class="d-flex">
                     <h4 class="mb-3"> Status: </h4>
-                    <span class="ms-5 flex-sm-row ">
-                        <button class="btn btn-sm btn-light"> {{ ticket$?.status }} </button>
-                    </span>
+                    <div class="dropdown ms-5 flex-sm-row">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            {{ ticket$?.status }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li *ngFor="let status of statusEnums">
+                                <button (click)="changeStatus(status)" class="dropdown-item">
+                                    {{ status }}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="mt-3 d-flex">
                     <h5 class="mb-3"> Created By: </h5>
@@ -36,7 +45,7 @@
                 </div>
                 <div class="mt-3 d-flex">
                     <h5 class="mb-3"> Created In: </h5>
-                    <h5 class="ms-5"> {{ ticket$?.createdIn }} </h5>
+                    <h5 class="ms-5"> {{ ticket$?.createdIn | date: 'yyyy/MM/dd z' }} </h5>
                 </div>
             </div>
         </div>
