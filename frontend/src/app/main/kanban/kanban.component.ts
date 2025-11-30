@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TicketStatusEnums } from '../../enums/ticket-status';
+import { kanbanConfig } from '../../mock/kanban.mock';
+import { Ticket } from '../../entities/ticket';
+import { tickets } from '../../mock/tickets-details.mock';
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-kanban',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './kanban.component.html',
   styleUrl: './kanban.component.scss'
 })
@@ -13,12 +17,15 @@ export class KanbanComponent implements OnInit {
 
   public statusList: TicketStatusEnums[] = [];
   public statusEnums!: TicketStatusEnums[];
+  public ticketList: Ticket[] = [];
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.statusEnums = Object.values(TicketStatusEnums);
+    this.statusList = kanbanConfig.colConfig;
+    this.ticketList = tickets;
   }
 
   addColumn(status: TicketStatusEnums) {
