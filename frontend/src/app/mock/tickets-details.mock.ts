@@ -10,7 +10,7 @@ const ticketDetail_3: Ticket = {
     status: TicketStatusEnums.OPEN,
     createdBy: User_1,
     createdIn: new Date(),
-    childTickets: [],
+    childTicketsId: [],
 };
 
 const ticketDetail_2: Ticket = {
@@ -20,7 +20,7 @@ const ticketDetail_2: Ticket = {
     status: TicketStatusEnums.IN_PROGRESS,
     createdBy: User_1,
     createdIn: new Date(),
-    childTickets: [],
+    childTicketsId: [],
 };
 
 const ticketDetail_1: Ticket = {
@@ -30,8 +30,7 @@ const ticketDetail_1: Ticket = {
     status: TicketStatusEnums.IN_PROGRESS,
     createdBy: User_1,
     createdIn: new Date(),
-    childTickets: [ticketDetail_2, ticketDetail_3],
-    
+    childTicketsId: [2, 3],
 };
 
 export const tickets = [ticketDetail_1, ticketDetail_2, ticketDetail_3];

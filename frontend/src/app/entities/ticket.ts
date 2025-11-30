@@ -8,5 +8,5 @@ export interface Ticket {
     status: TicketStatusEnums,
     createdBy: User,
     createdIn: Date,
-    childTickets: Ticket[],
+    childTicketsId: number[],
 };
