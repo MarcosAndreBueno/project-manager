@@ -12,13 +12,13 @@
         <!-- Pages -->
         <ul class="navbar-nav row">
             <li class="nav-item col-4">
-                <a class="navbar-brand active" aria-current="page" href="#">Logo</a>
+                <a class="navbar-brand active" aria-current="page" [routerLink]="['']">Logo</a>
             </li>
             <li class="nav-item col-4">
-                <a class="nav-link" href="kanban">Kanban</a>
+                <a class="nav-link" [routerLink]="['kanban']">Kanban</a>
             </li>
             <li class="nav-item col-4">
-                <a class="nav-link" href="ticket">Tickets</a>
+                <a class="nav-link" [routerLink]="['ticket']">Tickets</a>
             </li>
         </ul>
 
@@ -38,12 +38,12 @@
     <div class="row">
         <section *ngIf="this.sidebar" class="col-2 sidebar-center bg-body-tertiary">
             <nav class="mt-2 navbar navbar-nav">
-                <a href="" class="d-block nav-link sidebar-anchor">Profile</a>
-                <a href="" class="d-block nav-link sidebar-anchor">Create Project</a>
-                <a href="" class="d-block nav-link sidebar-anchor">Create Ticket</a>
-                <a href="" class="d-block nav-link sidebar-anchor">Teams</a>
-                <a href="" class="d-block nav-link sidebar-anchor">About</a>
-                <a href="" class="d-block nav-link sidebar-anchor">Config</a>
+                <a [routerLink]="" class="d-block nav-link sidebar-anchor">Profile</a>
+                <a [routerLink]="" class="d-block nav-link sidebar-anchor">Create Project</a>
+                <a [routerLink]="['ticket-new']" class="d-block nav-link sidebar-anchor">Create Ticket</a>
+                <a [routerLink]="" class="d-block nav-link sidebar-anchor">Teams</a>
+                <a [routerLink]="" class="d-block nav-link sidebar-anchor">About</a>
+                <a [routerLink]="" class="d-block nav-link sidebar-anchor">Config</a>
             </nav>
         </section>
         <div class="col">

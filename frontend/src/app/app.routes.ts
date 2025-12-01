@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { TicketComponent } from './main/ticket/ticket.component';
-import { TickerDetailsComponent } from './main/ticket/ticker-details/ticker-details.component';
+import { TicketDetailsComponent } from './main/ticket/ticket-details/ticket-details.component';
+import { TicketNewComponent } from './main/ticket/ticket-new/ticket-new.component';
 
 export const routeConfig: Routes = [
     {
@@ -11,7 +12,10 @@ export const routeConfig: Routes = [
                 path: 'kanban', loadComponent: () => import('./main/kanban/kanban.component').then(c => c.KanbanComponent)
             },
             {
-                path: 'ticket-details/:id', loadComponent: () => import('./main/ticket/ticker-details/ticker-details.component').then(c => TickerDetailsComponent)
+                path: 'ticket-details/:id', loadComponent: () => import('./main/ticket/ticket-details/ticket-details.component').then(c => TicketDetailsComponent)
+            },
+            {
+                path: 'ticket-new', loadComponent: () => import('./main/ticket/ticket-new/ticket-new.component').then(c => TicketNewComponent)
             },
             {
                 path: 'ticket', loadComponent: () => import('./main/ticket/ticket.component').then(c => TicketComponent)

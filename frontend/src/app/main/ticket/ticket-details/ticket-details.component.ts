@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { TicketStatusEnums } from '../../../enums/ticket-status';
 
 @Component({
-  selector: 'app-ticker-details',
+  selector: 'app-ticket-details',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './ticker-details.component.html',
-  styleUrl: './ticker-details.component.scss'
+  templateUrl: './ticket-details.component.html',
+  styleUrl: './ticket-details.component.scss'
 })
-export class TickerDetailsComponent implements OnInit {
+export class TicketDetailsComponent implements OnInit {
   public ticket$?: Ticket;
   public childTickets$?: Ticket[];
   public statusEnums?: TicketStatusEnums[];

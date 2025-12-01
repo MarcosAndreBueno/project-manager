@@ -3,7 +3,6 @@ export enum TicketStatusEnums {
     IN_PROGRESS = 'In Progress',
     WAITING_CLIENT = 'Waiting for Client',
     TESTING = 'Testing',
-    RESOLVED = 'Resolved',
     STAGING = 'Staging',
     CLOSED = 'Closed',
     CANCELED = 'Canceled',
