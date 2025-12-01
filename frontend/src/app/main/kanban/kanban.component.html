@@ -1,10 +1,41 @@
 <section class="container-fluid">
+
+    <!--Add Col-->
+    <div class="mt-1 dropdown d-flex justify-content-end">
+        <button class="dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
+            Add column
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item" *ngFor="let status of statusEnums">
+                <button (click)="addColumn(status)">{{ status }}</button>
+            </li>
+        </ul>
+    </div>
+
+    <!--Remove Col-->
+    <div class="d-flex justify-content-end">
+        <div class="dropdown ">
+            <button class="dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
+                Remove column
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" *ngFor="let status of statusEnums">
+                    <button (click)="removeColumn(status)">{{ status }}</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Col content-->
     <div class="row">
         <div class="col mt-3 me-1 border border-2" *ngFor="let status of statusList">
-            <div class="d-flex">
-                <h6 class="mt-3 col-10">{{ status }}</h6>
-                <button class="ms-3 btn btn-outline-danger" (click)="removeColumn(status)">
-                    <i class="bi bi-trash"></i>
+            <div class="d-flex justify-content-between">
+                <button class="btn" (click)="moveCol('left', status)">
+                    <i class="bi bi-arrow-left-circle-fill text-light"></i>
+                </button>
+                <h6 class="mt-2">{{ status }}</h6>
+                <button class="btn" (click)="moveCol('right', status)">
+                    <i class="bi bi-arrow-right-circle-fill text-light"></i>
                 </button>
             </div>
             <div class="mt-3" *ngFor="let ticket of ticketList">
@@ -23,15 +54,3 @@
         </div>
     </div>
 </section>
-
-
-<div class="dropdown">
-    <button class="dropdown-toggle" data-bs-toggle="dropdown">
-        Adicionar coluna
-    </button>
-    <ul class="dropdown-menu">
-        <li class="dropdown-item" *ngFor="let status of statusEnums">
-            <button (click)="addColumn(status)">{{ status }}</button>
-        </li>
-    </ul>
-</div>

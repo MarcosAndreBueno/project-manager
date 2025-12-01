@@ -39,4 +39,24 @@ export class KanbanComponent implements OnInit {
     this.statusList = this.statusList.filter(s => s !== status);
     console.log('inside remove');
   }
+
+  moveCol(direction: string, status: TicketStatusEnums) {
+    if (direction == 'left') {
+      let index = this.statusList.findIndex(s => s == status);
+
+      if (index != 0) {
+        let prevStatus = this.statusList.at(index - 1);
+        this.statusList[index] = prevStatus!;
+        this.statusList[index - 1] = status;
+      }
+    } else {
+      let index = this.statusList.findIndex(s => s == status);
+
+      if (index != this.statusList.length-1) {
+        let nextStatus = this.statusList.at(index + 1);
+        this.statusList[index] = nextStatus!;
+        this.statusList[index + 1] = status;
+      }
+    }
+  }
 }
