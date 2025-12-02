@@ -31,7 +31,6 @@ export class TicketDetailsComponent implements OnInit {
     });
     
     this.statusEnums = Object.values(TicketStatusEnums);
-    console.log(this.statusEnums)
   }
 
   public changeStatus(status: TicketStatusEnums): void {

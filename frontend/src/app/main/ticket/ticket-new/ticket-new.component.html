@@ -13,20 +13,20 @@
                         [ngClass]="{'is-invalid': title?.invalid && (title?.dirty || title?.touched)}"
                         formControlName="title" required>
 
-                    <ng-container *ngIf="title?.invalid && (title?.dirty || title?.touched)">
-                        <ng-container *ngIf="title?.hasError('required')">
+                    @if (title?.invalid && (title?.dirty || title?.touched)) {
+                        @if (title?.hasError('required')){
                             <div class="invalid-feedback">
                                 Name is required.
                             </div>
-                        </ng-container>
-                        <ng-container *ngIf="title?.hasError('minlength')">
+                        }
+                        @if (title?.hasError('minlength')){
                             <div class="invalid-feedback">
                                 Name must be at least 4 characters long.
                             </div>
-                        </ng-container>
-                    </ng-container>
+                        }
+                    }
                 </div>
-                
+
                 <div class="mt-3">
                     <label class="form-label">Description</label>
                     <textarea class="form-control" formControlName="description">

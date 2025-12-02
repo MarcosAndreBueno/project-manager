@@ -6,9 +6,11 @@
             Add column
         </button>
         <ul class="dropdown-menu">
-            <li class="dropdown-item" *ngFor="let status of statusEnums">
+            @for (status of statusEnums; track status) {
+            <li class="dropdown-item">
                 <button (click)="addColumn(status)">{{ status }}</button>
             </li>
+            }
         </ul>
     </div>
 
@@ -19,16 +21,19 @@
                 Remove column
             </button>
             <ul class="dropdown-menu">
-                <li class="dropdown-item" *ngFor="let status of statusEnums">
+                @for (status of statusEnums; track status) {
+                <li class="dropdown-item">
                     <button (click)="removeColumn(status)">{{ status }}</button>
                 </li>
+                }
             </ul>
         </div>
     </div>
 
     <!--Col content-->
     <div class="row">
-        <div class="col mt-3 me-1 border border-2" *ngFor="let status of statusList">
+        @for (status of statusList; track status) {
+        <div class="col mt-3 me-1 border border-2">
             <div class="d-flex justify-content-between">
                 <button class="btn" (click)="moveCol('left', status)">
                     <i class="bi bi-arrow-left-circle-fill text-light"></i>
@@ -38,8 +43,10 @@
                     <i class="bi bi-arrow-right-circle-fill text-light"></i>
                 </button>
             </div>
-            <div class="mt-3" *ngFor="let ticket of ticketList">
-                <ng-container class="mt-5" *ngIf="ticket.status == status">
+            @for (ticket of ticketList; track ticket.id) {
+            <div class="mt-3">
+                @if (ticket.status == status) {
+                <div class="mt-5">
                     <div class="border border-secondary rounded">
                         <p class="ms-1">{{ ticket.id }}</p>
                         <p class="text-center">
@@ -49,8 +56,11 @@
                         </p>
                         <p class="text-center">{{ ticket.description }}</p>
                     </div>
-                </ng-container>
+                </div>
+                }
             </div>
+            }
         </div>
+        }
     </div>
 </section>

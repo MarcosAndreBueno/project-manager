@@ -8,19 +8,21 @@
                         <p class="col-6 mt-2"> {{ ticket$?.description }} </p>
                     </div>
 
-                    <div *ngIf="ticket$">
-                        <div *ngFor="let childTicket of childTickets$" class="row justify-content-center">
-                            <p class="col-1 mt-2"> {{ childTicket.id }} </p>
-                            <p class="col-2 mt-2"> {{ childTicket.title }} </p>
-                            <p class="col-4 mt-2"> {{ childTicket.description }} </p>
-                            <a [routerLink]="['/ticket-details', childTicket.id]" class="col-2 mt-2"> Link </a>
-                            <span class="col-1">
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash "></i>
-                                </button>
-                            </span>
-                        </div>
+                    @if (ticket$) {
+                    @for(childTicket of childTickets$; track childTicket.id) {
+                    <div class="row justify-content-center">
+                        <p class="col-1 mt-2"> {{ childTicket.id }} </p>
+                        <p class="col-2 mt-2"> {{ childTicket.title }} </p>
+                        <p class="col-4 mt-2"> {{ childTicket.description }} </p>
+                        <a [routerLink]="['/ticket-details', childTicket.id]" class="col-2 mt-2"> Link </a>
+                        <span class="col-1">
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash "></i>
+                            </button>
+                        </span>
                     </div>
+                    }
+                    }
                 </div>
             </div>
             <div class="col-4 mt-5">
@@ -31,11 +33,13 @@
                             {{ ticket$?.status }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li *ngFor="let status of statusEnums">
+                            @for (status of statusEnums; track status) {
+                            <li>
                                 <button (click)="changeStatus(status)" class="dropdown-item">
                                     {{ status }}
                                 </button>
                             </li>
+                            }
                         </ul>
                     </div>
                 </div>
