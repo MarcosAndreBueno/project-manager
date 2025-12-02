@@ -1,6 +1,6 @@
 import { CommonModule, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { tickets } from '../../../mock/tickets-details.mock';
 import { TicketStatusEnums } from '../../../enums/ticket-status';
 import { User_1 } from '../../../mock/user.mock';
@@ -19,7 +19,9 @@ export class TicketNewComponent implements OnInit {
   public user = User_1;
   public today = new Date();
   public formattedDate = this.today.toLocaleDateString("pt-BR");
+  
   public form!: ModelFormGroup<Ticket>;
+  //public form!: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder) { }
@@ -30,7 +32,13 @@ export class TicketNewComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id: new FormControl<number>(id!),
-      title: new FormControl<string>(''),
+      title: new FormControl<string>(
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(4),
+        ]
+      ),
       description: new FormControl<string>(''),
       status: new FormControl<TicketStatusEnums>(TicketStatusEnums.OPEN),
       createdBy: this.formBuilder.group({
@@ -44,8 +52,14 @@ export class TicketNewComponent implements OnInit {
     console.log(this.form);
   }
 
+  get title() {
+    return this.form.get('title');
+  }
+
   onSubmit() {
-    console.log("dentro submit:", this.form);
+    this.form.invalid ? 
+      console.log("form invalid:", this.form) : 
+      console.log("form valid:", this.form);
   }
 
   close() {
