@@ -12,13 +12,13 @@ export const routeConfig: Routes = [
                 path: 'kanban', loadComponent: () => import('./main/kanban/kanban.component').then(c => c.KanbanComponent)
             },
             {
-                path: 'ticket-details/:id', loadComponent: () => import('./main/ticket/ticket-details/ticket-details.component').then(c => TicketDetailsComponent)
+                path: 'ticket-details/:id', loadComponent: () => import('./main/ticket/ticket-details/ticket-details.component').then(c => c.TicketDetailsComponent)
             },
             {
-                path: 'ticket-new', loadComponent: () => import('./main/ticket/ticket-new/ticket-new.component').then(c => TicketNewComponent)
+                path: 'ticket-new', loadComponent: () => import('./main/ticket/ticket-new/ticket-new.component').then(c => c.TicketNewComponent)
             },
             {
-                path: 'ticket', loadComponent: () => import('./main/ticket/ticket.component').then(c => TicketComponent)
+                path: 'ticket', loadComponent: () => import('./main/ticket/ticket.component').then(c => c.TicketComponent)
             },
         ]
     },

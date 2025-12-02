@@ -1,1 +1,49 @@
-<p>ticket-new works!</p>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row ">
+            <div class="">
+                <h3 class="mt-3">Create ticket</h3>
+            </div>
+
+            <div class="col-5">
+                <div class="mt-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" formControlName="title">
+                </div>
+                <div class="mt-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" formControlName="description">
+                </textarea>
+                </div>
+                <fieldset disabled formGroupName="createdBy">
+                    <div class="mt-3">
+                        <label for="disabledTextInput" class="form-label">Created By</label>
+                        <input type="text" class="form-control" placeholder="Disabled input" formControlName="name">
+                    </div>
+                </fieldset>
+                <fieldset disabled>
+                    <div class="mt-3">
+                        <label for="disabledTextInput" class="form-label">Created In</label>
+                        <input type="text" class="form-control" [placeholder]=formattedDate>
+                    </div>
+                </fieldset>
+                <div class="mt-3">
+                    <label class="form-label">Child Tickets Id</label>
+                    <input type="text" class="form-control" formControlName="childTicketsId">
+                </div>
+            </div>
+
+            <div>
+                <div class="col-5 d-flex justify-content-between">
+
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary" name="submit">Create</button>
+                    </div>
+                    <div class="mt-3 me-3">
+                        <button type="" class="btn btn-outline-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
