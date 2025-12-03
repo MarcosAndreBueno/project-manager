@@ -20,6 +20,9 @@ export const routeConfig: Routes = [
             {
                 path: 'ticket', loadComponent: () => import('./main/ticket/ticket.component').then(c => c.TicketComponent)
             },
+            {
+                path: 'profile', loadComponent: () => import('./main/profile/profile.component').then(c => c.ProfileComponent)
+            }
         ]
     },
 ];
