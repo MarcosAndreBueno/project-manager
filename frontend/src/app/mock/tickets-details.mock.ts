@@ -6,7 +6,7 @@ export const tickets: Ticket[] = [
   // ------- EPIC 1 -------
   {
     id: 1,
-    title: "Improve authentication module",
+    title: "Improve authentication module ",
     description: "Epic: Modernize authentication flow and increase security.",
     status: TicketStatusEnums.IN_PROGRESS,
     createdBy: userList[1],

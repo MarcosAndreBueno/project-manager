@@ -15,6 +15,7 @@ export class TicketComponent {
 
   ticketList: Ticket[];
   descriptionLimit: number = 50;
+  titleLimit: number = 50;
 
   constructor() {
     this.ticketList = tickets;
