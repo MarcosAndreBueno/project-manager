@@ -4,6 +4,6 @@ export enum TicketStatusEnums {
     WAITING_CLIENT = 'Waiting for Client',
     TESTING = 'Testing',
     STAGING = 'Staging',
-    CLOSED = 'Closed',
     CANCELED = 'Canceled',
+    DONE = 'Done',
 }

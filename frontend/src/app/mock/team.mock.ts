@@ -1,13 +1,9 @@
 import { Team } from "../entities/team";
 
-const Team_2: Team = {
-    id: 2,
-    name: 'Team_2',
-};
-const Team_1: Team = {
-    id: 1,
-    name: 'Team_1',
-};
-
-
-export const teamList = [Team_1, Team_2];
+export const teamList: Team[] = [
+  { id: 1, name: 'Platform Engineering' },
+  { id: 2, name: 'Frontend Squad' },
+  { id: 3, name: 'Backend Services' },
+  { id: 4, name: 'QA & Automation' },
+  { id: 5, name: 'DevOps & Infrastructure' }
+];
