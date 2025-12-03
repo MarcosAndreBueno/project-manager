@@ -1,0 +1,14 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'normalizeStringIfExceeded',
+  standalone: true,
+})
+export class NormalizeStringIfExceeded implements PipeTransform {
+
+  transform(value: string, maxLength: number): string {
+    return value.length < maxLength ? 
+        value :
+        value.substring(0, maxLength-3) + '...'
+  }
+}

@@ -25,7 +25,7 @@ export const routeConfig: Routes = [
             },
             {
                 path: 'team', loadComponent: () => import('./main/team/team.component').then(c => c.TeamComponent)
-            }
+            },
         ]
     },
 ];

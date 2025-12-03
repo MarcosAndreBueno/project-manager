@@ -3,20 +3,21 @@ import { tickets } from '../../mock/tickets-details.mock';
 import { Ticket } from '../../entities/ticket';
 import { CommonModule, formatDate } from '@angular/common';
 import { RouterModule } from "@angular/router";
+import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
 
 @Component({
   selector: 'app-ticket',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NormalizeStringIfExceeded],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss'
 })
 export class TicketComponent {
 
-  ticketList: Ticket[];
-  descriptionLimit: number = 50;
-  titleLimit: number = 50;
-
+  public ticketList: Ticket[];
+  public descriptionLimit: number = 70;
+  public titleLimit: number = 50;
+  
   constructor() {
     this.ticketList = tickets;
   }

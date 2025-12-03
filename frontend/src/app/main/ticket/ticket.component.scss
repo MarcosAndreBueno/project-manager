@@ -1,4 +1,4 @@
-.grid-cols {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.vertical-alignment {
+  min-height: 5.5rem; 
+  max-height: 5.5rem;
 }

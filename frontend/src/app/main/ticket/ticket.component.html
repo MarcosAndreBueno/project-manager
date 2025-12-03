@@ -4,24 +4,16 @@
             @for(ticket of ticketList; track ticket.id) {
             <div class="border mt-3 me-3 col-3 d-flex flex-column">
                 <p>{{ ticket.id }}</p>
-                <h3 class="text-center ">
+                <h3 class="text-center vertical-alignment">
                     <a [routerLink]="['/ticket-details', ticket.id]">
-                        @if (ticket.title.length > titleLimit) {
-                        {{ ticket.title.substring(0, titleLimit) }}...
-                        } @else {
-                        {{ ticket.title }}
-                        }
+                        {{ ticket.title | normalizeStringIfExceeded: titleLimit }}
                     </a>
                 </h3>
 
-                <p class="mt-3 align-content-center">
-                    @if (ticket.description.length > descriptionLimit) {
-                    {{ ticket.description.substring(0, descriptionLimit ) }}...
-                    } @else {
-                    {{ ticket.description }}
-                    }
+                <p class="mt-3 mb-5 align-content-center">
+                    {{ ticket.description | normalizeStringIfExceeded: descriptionLimit }}
                 </p>
-                <p class="mt-auto"> {{ ticket.createdIn | date:'dd/MM/yyyy hh:mm:ss z' }} </p>
+                <p class="mt-auto text-center"> {{ ticket.status }} </p>
             </div>
             }
         </div>>

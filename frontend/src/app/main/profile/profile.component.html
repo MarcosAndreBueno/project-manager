@@ -13,10 +13,10 @@
                 <div class="ps-3">
                     <h5 class="text-center">
                         <a [routerLink]="['/ticket-details', ticket.id]">
-                            {{ ticket.title }}
+                            {{ ticket.title | normalizeStringIfExceeded: titleLimit }}
                         </a>
                     </h5>
-                    <p class="my-3"> {{ ticket.description }} </p>
+                    <p class="my-3"> {{ ticket.description | normalizeStringIfExceeded: descriptionLimit }} </p>
                     <p class="text-center"> {{ ticket.status }} </p>
                 </div>
             </div>

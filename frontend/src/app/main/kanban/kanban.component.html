@@ -51,10 +51,15 @@
                         <p class="ms-1">{{ ticket.id }}</p>
                         <p class="text-center">
                             <a [routerLink]="['/ticket-details', ticket.id]">
-                                {{ ticket.title }}
+                                {{ ticket.title | normalizeStringIfExceeded: titleLimit }}
                             </a>
                         </p>
-                        <p class="text-center">{{ ticket.description }}</p>
+                        <p class="text-center">
+                            {{ ticket.description | normalizeStringIfExceeded: descriptionLimit }}
+                        </p>
+                        <p class="text-center">
+                            {{ ticket.createdIn | date: 'dd/MM/YYYY' }}
+                        </p>
                     </div>
                 </div>
                 }

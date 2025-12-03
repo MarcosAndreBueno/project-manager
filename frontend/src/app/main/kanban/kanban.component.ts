@@ -5,11 +5,12 @@ import { kanbanConfig } from '../../mock/kanban.mock';
 import { Ticket } from '../../entities/ticket';
 import { tickets } from '../../mock/tickets-details.mock';
 import { RouterModule } from "@angular/router";
+import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
 
 @Component({
   selector: 'app-kanban',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NormalizeStringIfExceeded],
   templateUrl: './kanban.component.html',
   styleUrl: './kanban.component.scss'
 })
@@ -18,6 +19,9 @@ export class KanbanComponent implements OnInit {
   public statusList: TicketStatusEnums[] = [];
   public statusEnums!: TicketStatusEnums[];
   public ticketList: Ticket[] = [];
+
+  public descriptionLimit: number = 70;
+  public titleLimit: number = 50;
 
   constructor() {
   }

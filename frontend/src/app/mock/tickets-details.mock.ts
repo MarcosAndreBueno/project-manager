@@ -42,10 +42,10 @@ export const tickets: Ticket[] = [
   },
   {
     id: 5,
-    title: "Create unit tests for authentication service",
+    title: "Create unit tests for authentication service.",
     description: "Increase coverage for authentication utils and services.",
     status: TicketStatusEnums.IN_PROGRESS,
-    createdBy: userList[12],
+    createdBy: userList[0],
     createdIn: new Date(),
     childTicketsId: []
   },
