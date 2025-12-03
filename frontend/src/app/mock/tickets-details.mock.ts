@@ -1,14 +1,13 @@
 import { TicketStatusEnums } from "../enums/ticket-status";
 import { Ticket } from "../entities/ticket";
-import { User_1 } from "./user.mock";
-import { formatDate } from "@angular/common";
+import { userList } from "./user.mock";
 
 const ticketDetail_3: Ticket = {
     id: 3,
     title: 'Ticket 1.2',
     description: 'Description of ticket 1.2',
     status: TicketStatusEnums.OPEN,
-    createdBy: User_1,
+    createdBy: userList[0],
     createdIn: new Date(),
     childTicketsId: [],
 };
@@ -18,7 +17,7 @@ const ticketDetail_2: Ticket = {
     title: 'Ticket 1.1',
     description: 'Description of ticket 1.1',
     status: TicketStatusEnums.IN_PROGRESS,
-    createdBy: User_1,
+    createdBy: userList[0],
     createdIn: new Date(),
     childTicketsId: [],
 };
@@ -28,7 +27,7 @@ const ticketDetail_1: Ticket = {
     title: 'Ticket 1',
     description: 'Description of ticket 1',
     status: TicketStatusEnums.IN_PROGRESS,
-    createdBy: User_1,
+    createdBy: userList[0],
     createdIn: new Date(),
     childTicketsId: [2, 3],
 };
