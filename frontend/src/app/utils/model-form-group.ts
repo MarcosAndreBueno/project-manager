@@ -1,5 +1,5 @@
 import { FormControl, FormGroup } from "@angular/forms";
-import { User } from "./user";
+import { User } from "../entities/user";
 
 // this types will become nested formGroup
 type typesToBecomeFormGroup = User;

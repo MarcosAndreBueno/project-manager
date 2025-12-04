@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../entities/user';
-import { userList } from '../../mock/user.mock';
 import { Ticket } from '../../entities/ticket';
-import { tickets } from '../../mock/tickets-details.mock';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
+import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
+import { TicketService } from '../../service/ticket.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,16 +15,22 @@ import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
-  public user!: User;
-  public ticketList!: Ticket[];
+  public user?: User;
+  public tickets?: Ticket[];
 
   public descriptionLimit: number = 70;
   public titleLimit: number = 50;
 
-  constructor() {}
+  constructor(
+    private ticketService: TicketService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
-    this.user = userList[0];
-    this.ticketList = tickets.filter(t => t.createdBy.id == this.user.id );
+    this.user = this.userService.getUserById(1);
+
+    if (this.user) {
+      this.tickets = this.ticketService.getTicketByUserId(this.user.id);
+    }
   }
 }

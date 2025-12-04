@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TicketStatusEnums } from '../../enums/ticket-status';
-import { kanbanConfig } from '../../mock/kanban.mock';
 import { Ticket } from '../../entities/ticket';
-import { tickets } from '../../mock/tickets-details.mock';
 import { RouterModule } from "@angular/router";
-import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
+import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
+import { TicketService } from '../../service/ticket.service';
+import { ConfigurationService } from '../../service/configuration.service';
+import { StatusService } from '../../service/status.service';
 
 @Component({
   selector: 'app-kanban',
@@ -16,50 +17,54 @@ import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
 })
 export class KanbanComponent implements OnInit {
 
-  public statusList: TicketStatusEnums[] = [];
   public statusEnums!: TicketStatusEnums[];
-  public ticketList: Ticket[] = [];
+  public kanbanColConfig: TicketStatusEnums[] = [];
+  public tickets: Ticket[] = [];
 
   public descriptionLimit: number = 70;
   public titleLimit: number = 50;
 
-  constructor() {
+  constructor(
+    private ticketService: TicketService,
+    private configService: ConfigurationService,
+    private statusService: StatusService
+  ) {
   }
 
   ngOnInit(): void {
-    this.statusEnums = Object.values(TicketStatusEnums);
-    this.statusList = kanbanConfig.colConfig;
-    this.ticketList = tickets;
+    this.statusEnums = this.statusService.getStatusEnums();
+    this.kanbanColConfig = this.configService.getKanbanConfigurations().colConfig;
+    this.tickets = this.ticketService.getTickets();
   }
 
   addColumn(status: TicketStatusEnums) {
-    if (!this.statusList.find(s => s == status)) {
-      this.statusList.push(status);
+    if (!this.kanbanColConfig.find(s => s == status)) {
+      this.kanbanColConfig.push(status);
     }
     console.log('inside add', status);
   }
 
   removeColumn(status: TicketStatusEnums) {
-    this.statusList = this.statusList.filter(s => s !== status);
+    this.kanbanColConfig = this.kanbanColConfig.filter(s => s !== status);
     console.log('inside remove');
   }
 
   moveCol(direction: string, status: TicketStatusEnums) {
     if (direction == 'left') {
-      let index = this.statusList.findIndex(s => s == status);
+      let index = this.kanbanColConfig.findIndex(s => s == status);
 
       if (index != 0) {
-        let prevStatus = this.statusList.at(index - 1);
-        this.statusList[index] = prevStatus!;
-        this.statusList[index - 1] = status;
+        let prevStatus = this.kanbanColConfig.at(index - 1);
+        this.kanbanColConfig[index] = prevStatus!;
+        this.kanbanColConfig[index - 1] = status;
       }
     } else {
-      let index = this.statusList.findIndex(s => s == status);
+      let index = this.kanbanColConfig.findIndex(s => s == status);
 
-      if (index != this.statusList.length-1) {
-        let nextStatus = this.statusList.at(index + 1);
-        this.statusList[index] = nextStatus!;
-        this.statusList[index + 1] = status;
+      if (index != this.kanbanColConfig.length - 1) {
+        let nextStatus = this.kanbanColConfig.at(index + 1);
+        this.kanbanColConfig[index] = nextStatus!;
+        this.kanbanColConfig[index + 1] = status;
       }
     }
   }

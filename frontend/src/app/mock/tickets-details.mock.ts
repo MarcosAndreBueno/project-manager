@@ -2,7 +2,7 @@ import { TicketStatusEnums } from "../enums/ticket-status";
 import { Ticket } from "../entities/ticket";
 import { userList } from "./user.mock";
 
-export const tickets: Ticket[] = [
+export const ticketList: Ticket[] = [
   // ------- EPIC 1 -------
   {
     id: 1,

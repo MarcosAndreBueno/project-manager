@@ -3,6 +3,8 @@ import { Team } from '../../entities/team';
 import { User } from '../../entities/user';
 import { teamList } from '../../mock/team.mock';
 import { userList } from '../../mock/user.mock';
+import { TeamService } from '../../service/team.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-team',
@@ -12,15 +14,17 @@ import { userList } from '../../mock/user.mock';
   styleUrl: './team.component.scss'
 })
 export class TeamComponent implements OnInit {
-  teamList!: Team[]
-  userList!: User[];
+  teams?: Team[]
+  users?: User[];
 
-  constructor() {}
+  constructor(
+    private teamService: TeamService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    this.teamList = teamList;
-    this.userList = userList;
-    
+    this.teams = this.teamService.getTeams();
+    this.users = this.userService.getUsers();
   }
 
   public isTeamWithoutUser(team: Team): boolean {

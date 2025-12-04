@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { tickets } from '../../mock/tickets-details.mock';
+import { Component, OnInit } from '@angular/core';
 import { Ticket } from '../../entities/ticket';
 import { CommonModule, formatDate } from '@angular/common';
 import { RouterModule } from "@angular/router";
-import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
+import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
+import { TicketService } from '../../service/ticket.service';
 
 @Component({
   selector: 'app-ticket',
@@ -12,14 +12,18 @@ import { NormalizeStringIfExceeded } from '../utils/filtro.pipe';
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss'
 })
-export class TicketComponent {
+export class TicketComponent implements OnInit {
 
-  public ticketList: Ticket[];
+  public tickets?: Ticket[];
   public descriptionLimit: number = 70;
   public titleLimit: number = 50;
-  
-  constructor() {
-    this.ticketList = tickets;
+
+  constructor(
+    private ticketService: TicketService,
+  ) { }
+
+  ngOnInit(): void {
+    this.tickets = this.ticketService.getTickets();
   }
 
   formatDate(date: Date) {

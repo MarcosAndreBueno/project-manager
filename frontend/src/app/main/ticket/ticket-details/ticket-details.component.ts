@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from '../../../entities/ticket';
-import { tickets } from '../../../mock/tickets-details.mock';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TicketStatusEnums } from '../../../enums/ticket-status';
+import { TicketService } from '../../../service/ticket.service';
+import { StatusService } from '../../../service/status.service';
 
 @Component({
   selector: 'app-ticket-details',
@@ -13,29 +14,37 @@ import { TicketStatusEnums } from '../../../enums/ticket-status';
   styleUrl: './ticket-details.component.scss'
 })
 export class TicketDetailsComponent implements OnInit {
-  public ticket$?: Ticket;
-  public childTickets$?: Ticket[];
+  public tickets?: Ticket;
+  public childTickets?: Ticket[];
   public statusEnums?: TicketStatusEnums[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private ticketService: TicketService,
+    private statusService: StatusService
+  ) {
   }
 
   ngOnInit(): void {
-    const currentId = this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      this.ticket$ = tickets.find(t => t.id === id)!;
-
-      this.childTickets$ = this.ticket$.childTicketsId
-        .map(id => tickets.find(t => t.id === id)!)
-
+      this.getTicketDetailsData(id);
     });
-    
-    this.statusEnums = Object.values(TicketStatusEnums);
+  }
+
+  private getTicketDetailsData(id: number): void {
+    this.tickets = this.ticketService.getTicketById(id);
+
+    if (this.tickets?.childTicketsId) {
+      this.childTickets = this.ticketService.getChildTickets(this.tickets.childTicketsId);
+    }
+
+    this.statusEnums = this.statusService.getStatusEnums();
   }
 
   public changeStatus(status: TicketStatusEnums): void {
-    if (this.ticket$) {
-      this.ticket$.status = status;
+    if (this.tickets) {
+      this.tickets.status = status;
     }
   }
 }

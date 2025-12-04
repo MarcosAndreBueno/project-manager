@@ -1,13 +1,15 @@
 import { CommonModule, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { tickets } from '../../../mock/tickets-details.mock';
 import { TicketStatusEnums } from '../../../enums/ticket-status';
 import { userList } from '../../../mock/user.mock';
-import { ModelFormGroup } from '../../../entities/model-form-group';
+import { ModelFormGroup } from '../../../utils/model-form-group';
 import { Ticket } from '../../../entities/ticket';
 import { Team } from '../../../entities/team';
 import { teamList } from '../../../mock/team.mock';
+import { UserService } from '../../../service/user.service';
+import { TeamService } from '../../../service/team.service';
+import { User } from '../../../entities/user';
 
 @Component({
   selector: 'app-ticket-new',
@@ -17,23 +19,27 @@ import { teamList } from '../../../mock/team.mock';
   styleUrl: './ticket-new.component.scss'
 })
 export class TicketNewComponent implements OnInit {
-  public id?: number;
-  public userList = userList;
-  public team_1 = teamList.at(0);
+  public id = 50;
+  public activeUser?: User;
+  public activeUserTeam?: Team;
   public today = new Date();
   public formattedDate = this.today.toLocaleDateString("pt-BR");
   
   public form!: ModelFormGroup<Ticket>;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private teamService: TeamService
+  ) { }
 
   ngOnInit(): void {
-    let id = tickets.at(tickets.length - 1)?.id;
-    if (id) id++;
-    const user = this.userList[0];
+    this.id++;
+    this.activeUser = this.userService.getUserById(0)!;
+    this.activeUserTeam = this.teamService.getTeamsByUser(this.activeUser.team.id);
 
     this.form = this.formBuilder.group({
-      id: new FormControl<number>(id!),
+      id: new FormControl<number>(this.id),
       title: new FormControl<string>(
         '', 
         [
@@ -44,9 +50,9 @@ export class TicketNewComponent implements OnInit {
       description: new FormControl<string>(''),
       status: new FormControl<TicketStatusEnums>(TicketStatusEnums.OPEN),
       createdBy: this.formBuilder.group({
-        id: new FormControl<number>(user.id),
-        name: new FormControl<string>(user.name),
-        team: new FormControl<Team>(this.team_1!),
+        id: new FormControl<number>(this.activeUser!.id),
+        name: new FormControl<string>(this.activeUser!.name),
+        team: new FormControl<Team>(this.activeUserTeam!),
       }),
       createdIn: new FormControl<Date>(this.today),
       childTicketsId: new FormControl<number[]>([]),
