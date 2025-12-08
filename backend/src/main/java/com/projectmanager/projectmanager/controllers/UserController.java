@@ -1,0 +1,21 @@
+package com.projectmanager.projectmanager.controllers;
+
+import com.projectmanager.projectmanager.entities.User;
+import com.projectmanager.projectmanager.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/api/users")
+public class UserController {
+
+    @Autowired
+    UserService userService;
+
+    @GetMapping
+    public User[] getUsers() {
+        return userService.getUsers();
+    }
+}
