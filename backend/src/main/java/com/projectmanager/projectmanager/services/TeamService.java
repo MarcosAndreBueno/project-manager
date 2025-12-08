@@ -10,6 +10,7 @@ public class TeamService {
         Team team1 = new Team(1L, "Team 1");
         Team team2 = new Team(2L, "Team 2");
 
-        return new Team[] { team1, team2 };
+        //return new Team[]{team1, team2};
+        return null;
     }
 }

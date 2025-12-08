@@ -1,9 +1,18 @@
 package com.projectmanager.projectmanager.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_user")
 public class User {
-    Long id;
-    String name;
-    String team;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    private String team;
 
     public User(Long id, String name, String team) {
         this.id = id;

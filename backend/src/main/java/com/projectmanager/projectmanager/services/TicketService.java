@@ -14,6 +14,7 @@ public class TicketService {
         Ticket ticket2 = new Ticket(2L, "Ticket 2", "Description 2",
                 "OPEN", "User 2", new Date(), new Long[0]);
 
-        return new Ticket[]{ticket1, ticket2};
+        //return new Ticket[]{ticket1, ticket2};
+        return null;
     }
 }

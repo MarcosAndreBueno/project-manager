@@ -10,6 +10,7 @@ public class UserService {
         User user1 = new User(1L, "User 1", "Team 1");
         User user2 = new User(2L, "User 2", "Team 2");
 
-        return new User[]{user1, user2};
+        //return new User[]{user1, user2};
+        return null;
     }
 }

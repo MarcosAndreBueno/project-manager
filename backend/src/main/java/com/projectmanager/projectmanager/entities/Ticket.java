@@ -1,17 +1,30 @@
 package com.projectmanager.projectmanager.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.Date;
 
-
+@Entity
 public class Ticket {
 
-    public Long id;
-    public String title;
-    public String description;
-    public String status;
-    public String createdBy;
-    public Date createdIn;
-    public Long[] childTickets;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    private String description;
+
+    private String status;
+
+    private String createdBy;
+
+    private Date createdIn;
+
+    private Long[] childTickets;
 
     public Ticket(Long id, String title, String description, String status, String createdBy, Date createdIn, Long[] childTickets) {
         this.id = id;
