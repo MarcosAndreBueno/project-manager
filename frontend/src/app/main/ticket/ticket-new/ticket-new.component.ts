@@ -22,26 +22,29 @@ export class TicketNewComponent implements OnInit {
   public id = 50;
   public activeUser?: User;
   public activeUserTeam?: Team;
-  public today = new Date();
-  public formattedDate = this.today.toLocaleDateString("pt-BR");
-  
+  public today: Date;
+  public formattedDate: string;
+
   public form!: ModelFormGroup<Ticket>;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private teamService: TeamService
-  ) { }
+  ) { 
+    this.today = new Date();
+    this.formattedDate = this.today.toLocaleDateString("pt-BR");
+  }
 
   ngOnInit(): void {
     this.id++;
-    this.activeUser = this.userService.getUserById(0)!;
+    this.activeUser = this.userService.getUserById(1)!;
     this.activeUserTeam = this.teamService.getTeamsByUser(this.activeUser.team.id);
 
     this.form = this.formBuilder.group({
       id: new FormControl<number>(this.id),
       title: new FormControl<string>(
-        '', 
+        '',
         [
           Validators.required,
           Validators.minLength(4),
@@ -66,8 +69,8 @@ export class TicketNewComponent implements OnInit {
   }
 
   onSubmit() {
-    this.form.invalid ? 
-      console.log("form invalid:", this.form) : 
+    this.form.invalid ?
+      console.log("form invalid:", this.form) :
       console.log("form valid:", this.form);
   }
 
