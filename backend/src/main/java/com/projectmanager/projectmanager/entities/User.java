@@ -1,6 +1,9 @@
 package com.projectmanager.projectmanager.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_user")
@@ -15,6 +18,10 @@ public class User {
     @ManyToOne()
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
+    private Set<Ticket> ticket;
 
     public User() {
     }
@@ -47,5 +54,13 @@ public class User {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Set<Ticket> getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Set<Ticket> ticket) {
+        this.ticket = ticket;
     }
 }

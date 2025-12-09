@@ -40,9 +40,9 @@ public class Test implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(user1, user2));
 
         Ticket ticket1 = new Ticket(null, "Ticket 1", "Description 1",
-                "OPEN", "User 1", new Date(), new Long[0]);
+                "OPEN", user1, new Date(), new Long[0]);
         Ticket ticket2 = new Ticket(null, "Ticket 2", "Description 2",
-                "OPEN", "User 2", new Date(), new Long[0]);
+                "OPEN", user1, new Date(), new Long[0]);
 
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
     }

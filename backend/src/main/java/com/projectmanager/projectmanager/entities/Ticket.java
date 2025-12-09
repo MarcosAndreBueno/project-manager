@@ -1,9 +1,7 @@
 package com.projectmanager.projectmanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -20,7 +18,9 @@ public class Ticket {
 
     private String status;
 
-    private String createdBy;
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User createdBy;
 
     private Date createdIn;
 
@@ -29,7 +29,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(Long id, String title, String description, String status, String createdBy, Date createdIn, Long[] childTickets) {
+    public Ticket(Long id, String title, String description, String status, User createdBy, Date createdIn, Long[] childTickets) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -71,11 +71,11 @@ public class Ticket {
         this.status = status;
     }
 
-    public String getCreatedBy() {
+    public User getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
 
