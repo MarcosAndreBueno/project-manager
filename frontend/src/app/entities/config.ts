@@ -1,5 +1,5 @@
-import { TicketStatusEnums } from "../enums/ticket-status";
+import { TicketStatus } from "./ticket-status";
 
 export interface Kanban {
-    colConfig: TicketStatusEnums[];
+    colConfig: TicketStatus[];
 }

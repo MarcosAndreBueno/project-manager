@@ -1,12 +1,18 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TicketStatusEnums } from "../enums/ticket-status";
+import { Observable } from "rxjs";
+import { TicketStatus } from "../entities/ticket-status";
 
 @Injectable({
     providedIn: 'root'
 })
 export class StatusService {
 
-    public getStatusEnums(): TicketStatusEnums[] {
-        return Object.values(TicketStatusEnums);
+    private readonly API = '/api';
+
+    constructor(private httpClient: HttpClient) { }
+
+    public getStatusEnums(): Observable<TicketStatus[]> {
+        return this.httpClient.get<TicketStatus[]>(`${this.API}/tickets/status`);
     }
 }

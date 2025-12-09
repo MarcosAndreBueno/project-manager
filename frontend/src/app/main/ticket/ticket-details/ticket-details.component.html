@@ -35,7 +35,7 @@
                             {{ tickets?.status }}
                         </button>
                         <ul class="dropdown-menu">
-                            @for (status of statusEnums; track status) {
+                            @for (status of (statusEnums$ | async); track status) {
                             <li>
                                 <button (click)="changeStatus(status)" class="dropdown-item">
                                     {{ status }}

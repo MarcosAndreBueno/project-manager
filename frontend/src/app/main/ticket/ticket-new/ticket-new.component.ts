@@ -1,15 +1,14 @@
-import { CommonModule, formatDate } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TicketStatusEnums } from '../../../enums/ticket-status';
-import { userList } from '../../../mock/user.mock';
-import { ModelFormGroup } from '../../../utils/model-form-group';
-import { Ticket } from '../../../entities/ticket';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Team } from '../../../entities/team';
-import { teamList } from '../../../mock/team.mock';
-import { UserService } from '../../../service/user.service';
-import { TeamService } from '../../../service/team.service';
+import { Ticket } from '../../../entities/ticket';
 import { User } from '../../../entities/user';
+import { TeamService } from '../../../service/team.service';
+import { UserService } from '../../../service/user.service';
+import { ModelFormGroup } from '../../../utils/model-form-group';
+import { TicketStatus } from '../../../entities/ticket-status';
+import { ticketStatus } from '../../../mock/ticket-status.mock';
 
 @Component({
   selector: 'app-ticket-new',
@@ -30,7 +29,7 @@ export class TicketNewComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private teamService: TeamService
+    private teamService: TeamService,
   ) { 
     this.today = new Date();
     this.formattedDate = this.today.toLocaleDateString("pt-BR");
@@ -51,7 +50,7 @@ export class TicketNewComponent implements OnInit {
         ]
       ),
       description: new FormControl<string>(''),
-      status: new FormControl<TicketStatusEnums>(TicketStatusEnums.OPEN),
+      status: new FormControl<TicketStatus>(ticketStatus[0]),
       createdBy: this.formBuilder.group({
         id: new FormControl<number>(this.activeUser!.id),
         name: new FormControl<string>(this.activeUser!.name),

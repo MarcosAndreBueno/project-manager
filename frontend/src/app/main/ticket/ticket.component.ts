@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Ticket } from '../../entities/ticket';
 import { CommonModule, formatDate } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from "@angular/router";
-import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
+import { Observable, of } from 'rxjs';
+import { Ticket } from '../../entities/ticket';
 import { TicketService } from '../../service/ticket.service';
+import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
 
 @Component({
   selector: 'app-ticket',
@@ -14,7 +15,7 @@ import { TicketService } from '../../service/ticket.service';
 })
 export class TicketComponent implements OnInit {
 
-  public tickets?: Ticket[];
+  public tickets$: Observable<Ticket[]> = of([]);
   public descriptionLimit: number = 70;
   public titleLimit: number = 50;
 
@@ -23,7 +24,7 @@ export class TicketComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.tickets = this.ticketService.getTickets();
+    this.tickets$ = this.ticketService.getTickets();
   }
 
   formatDate(date: Date) {

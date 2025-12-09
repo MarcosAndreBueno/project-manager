@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Ticket } from '../../../entities/ticket';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TicketStatusEnums } from '../../../enums/ticket-status';
-import { TicketService } from '../../../service/ticket.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { Ticket } from '../../../entities/ticket';
 import { StatusService } from '../../../service/status.service';
+import { TicketService } from '../../../service/ticket.service';
+import { TicketStatus } from '../../../entities/ticket-status';
 
 @Component({
   selector: 'app-ticket-details',
@@ -16,7 +17,7 @@ import { StatusService } from '../../../service/status.service';
 export class TicketDetailsComponent implements OnInit {
   public tickets?: Ticket;
   public childTickets?: Ticket[];
-  public statusEnums?: TicketStatusEnums[];
+  public statusEnums$: Observable<TicketStatus[]> = of([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -39,12 +40,12 @@ export class TicketDetailsComponent implements OnInit {
       this.childTickets = this.ticketService.getChildTickets(this.tickets.childTicketsId);
     }
 
-    this.statusEnums = this.statusService.getStatusEnums();
+    this.statusEnums$ = this.statusService.getStatusEnums();
   }
 
-  public changeStatus(status: TicketStatusEnums): void {
+  public changeStatus(status: TicketStatus): void {
     if (this.tickets) {
-      this.tickets.status = status;
+      this.tickets.status.id = status.id;
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Kanban } from "../entities/config";
-import { TicketStatusEnums } from "../enums/ticket-status";
+import { ticketStatus } from "./ticket-status.mock";
 
 export let kanbanConfig: Kanban = {
-    colConfig: [TicketStatusEnums.OPEN, TicketStatusEnums.IN_PROGRESS, TicketStatusEnums.CANCELED, TicketStatusEnums.DONE]
+    colConfig: [ticketStatus[0], ticketStatus[1], ticketStatus[5], ticketStatus[7]]
 };

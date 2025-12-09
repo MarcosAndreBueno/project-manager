@@ -17,7 +17,7 @@
                         </a>
                     </h5>
                     <p class="my-3"> {{ ticket.description | normalizeStringIfExceeded: descriptionLimit }} </p>
-                    <p class="text-center"> {{ ticket.status }} </p>
+                    <p class="text-center"> {{ ticket.status.name }} </p>
                 </div>
             </div>
             }

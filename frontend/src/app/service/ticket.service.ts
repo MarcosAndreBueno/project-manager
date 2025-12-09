@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Ticket } from "../entities/ticket";
 import { ticketList } from "../mock/tickets-details.mock";
 
@@ -7,8 +9,12 @@ import { ticketList } from "../mock/tickets-details.mock";
 })
 export class TicketService {
 
-    public getTickets(): Ticket[] {
-        return ticketList;
+    private readonly API = '/api';
+
+    constructor(private httpClient: HttpClient) {}
+
+    public getTickets(): Observable<Ticket[]> {
+        return this.httpClient.get<Ticket[]>(`${this.API}/tickets`);
     }
 
     public getTicketById(id: number): Ticket | undefined {
@@ -16,26 +22,9 @@ export class TicketService {
     }
 
     public getChildTickets(childTicketsId: number[]): Ticket[] | undefined {
-        const childTickets1 = childTicketsId
+        return childTicketsId
             .map(id => this.getTicketById(id))
             .filter((ticket): ticket is Ticket => ticket !== undefined);
-
-
-        const childTickets: Ticket[] = [];
-
-        const mapped = childTicketsId.map(id => this.getTicketById(id));
-
-        for (const item of mapped) {
-            if (item !== undefined) {
-                childTickets.push(item);
-            }
-        }
-
-        if (childTickets === undefined) {
-            return undefined;
-        } else {
-            return childTickets;
-        }
     }
 
     public getTicketByUserId(id: number): Ticket[] | undefined {
