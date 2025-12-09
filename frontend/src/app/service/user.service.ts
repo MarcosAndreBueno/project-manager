@@ -9,10 +9,12 @@ import { userList } from "../mock/user.mock";
 })
 export class UserService {
 
+    private readonly API = '/api';
+
     constructor(private httpClient: HttpClient) {}
     
     public getUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>("http://localhost:8080/api/users");
+        return this.httpClient.get<User[]>(`${this.API}/users`);
     }
 
     public getUserById(id: number): User | undefined {

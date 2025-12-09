@@ -9,10 +9,12 @@ import { teamList } from "../mock/team.mock";
 })
 export class TeamService {
 
+    private readonly API = '/api';
+
     constructor(private httpClient: HttpClient) { }
 
     public getTeams(): Observable<Team[]> {
-        return this.httpClient.get<Team[]>("http://localhost:8080/api/teams");
+        return this.httpClient.get<Team[]>(`${this.API}/teams`);
     }
 
     public getTeamsByUser(userTeamId: number): Team | undefined {
