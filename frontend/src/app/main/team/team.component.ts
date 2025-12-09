@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Team } from '../../entities/team';
 import { User } from '../../entities/user';
-import { teamList } from '../../mock/team.mock';
 import { userList } from '../../mock/user.mock';
 import { TeamService } from '../../service/team.service';
 import { UserService } from '../../service/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './team.component.html',
   styleUrl: './team.component.scss'
 })
 export class TeamComponent implements OnInit {
-  teams?: Team[]
-  users?: User[];
+  public teams$: Observable<Team[]> = of([]);
+  public users$: Observable<User[]> = of([]);
 
   constructor(
     private teamService: TeamService,
@@ -23,8 +24,8 @@ export class TeamComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.teams = this.teamService.getTeams();
-    this.users = this.userService.getUsers();
+    this.teams$ = this.teamService.getTeams();
+    this.users$ = this.userService.getUsers();
   }
 
   public isTeamWithoutUser(team: Team): boolean {

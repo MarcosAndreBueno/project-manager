@@ -36,22 +36,25 @@ public class Test implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Team team1 = new Team(null, "Team 1");
         Team team2 = new Team(null, "Team 2");
-
         teamRepository.saveAll(Arrays.asList(team1, team2));
 
         User user1 = new User(null, "User 1", team1);
         User user2 = new User(null, "User 2", team1);
-
         userRepository.saveAll(Arrays.asList(user1, user2));
 
-        TicketStatus ticketStatus = new TicketStatus(null, "OPEN");
-        ticketStatusRepository.save(ticketStatus);
+        TicketStatus tickSt1 = new TicketStatus(null, "OPEN");
+        TicketStatus tickSt2 = new TicketStatus(null, "IN_PROGRESS");
+        TicketStatus tickSt3 = new TicketStatus(null, "WAITING_CLIENT");
+        TicketStatus tickSt4 = new TicketStatus(null, "TESTING");
+        TicketStatus tickSt5 = new TicketStatus(null, "STAGING");
+        TicketStatus tickSt6 = new TicketStatus(null, "CANCELED");
+        TicketStatus tickSt7 = new TicketStatus(null, "DONE");
+        ticketStatusRepository.saveAll(Arrays.asList(tickSt1, tickSt2, tickSt3, tickSt4, tickSt5, tickSt6, tickSt7));
 
         Ticket ticket1 = new Ticket(null, "Ticket 1", "Description 1",
-                ticketStatus, user1, new Date(), new Long[0]);
+                tickSt1, user1, new Date(), new Long[0]);
         Ticket ticket2 = new Ticket(null, "Ticket 2", "Description 2",
-                ticketStatus, user1, new Date(), new Long[0]);
-
+                tickSt1, user1, new Date(), new Long[0]);
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
     }
 }
