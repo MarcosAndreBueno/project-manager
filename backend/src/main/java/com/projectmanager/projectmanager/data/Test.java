@@ -2,9 +2,11 @@ package com.projectmanager.projectmanager.data;
 
 import com.projectmanager.projectmanager.entities.Team;
 import com.projectmanager.projectmanager.entities.Ticket;
+import com.projectmanager.projectmanager.entities.TicketStatus;
 import com.projectmanager.projectmanager.entities.User;
 import com.projectmanager.projectmanager.repositories.TeamRepository;
 import com.projectmanager.projectmanager.repositories.TicketRepository;
+import com.projectmanager.projectmanager.repositories.TicketStatusRepository;
 import com.projectmanager.projectmanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class Test implements CommandLineRunner {
     @Autowired
     TeamRepository teamRepository;
 
+    @Autowired
+    TicketStatusRepository ticketStatusRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Team team1 = new Team(null, "Team 1");
@@ -39,10 +44,13 @@ public class Test implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(user1, user2));
 
+        TicketStatus ticketStatus = new TicketStatus(null, "OPEN");
+        ticketStatusRepository.save(ticketStatus);
+
         Ticket ticket1 = new Ticket(null, "Ticket 1", "Description 1",
-                "OPEN", user1, new Date(), new Long[0]);
+                ticketStatus, user1, new Date(), new Long[0]);
         Ticket ticket2 = new Ticket(null, "Ticket 2", "Description 2",
-                "OPEN", user1, new Date(), new Long[0]);
+                ticketStatus, user1, new Date(), new Long[0]);
 
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
     }

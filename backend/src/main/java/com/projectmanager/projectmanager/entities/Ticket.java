@@ -1,6 +1,5 @@
 package com.projectmanager.projectmanager.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -16,7 +15,8 @@ public class Ticket {
 
     private String description;
 
-    private String status;
+    @ManyToOne()
+    private TicketStatus status;
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
@@ -29,7 +29,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(Long id, String title, String description, String status, User createdBy, Date createdIn, Long[] childTickets) {
+    public Ticket(Long id, String title, String description, TicketStatus status, User createdBy, Date createdIn, Long[] childTickets) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -63,11 +63,11 @@ public class Ticket {
         this.description = description;
     }
 
-    public String getStatus() {
+    public TicketStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TicketStatus status) {
         this.status = status;
     }
 
