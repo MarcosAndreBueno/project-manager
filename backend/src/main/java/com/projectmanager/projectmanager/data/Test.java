@@ -34,8 +34,8 @@ public class Test implements CommandLineRunner {
 
         teamRepository.saveAll(Arrays.asList(team1, team2));
 
-        User user1 = new User(null, "User 1", "Team 1");
-        User user2 = new User(null, "User 2", "Team 2");
+        User user1 = new User(null, "User 1", team1);
+        User user2 = new User(null, "User 2", team1);
 
         userRepository.saveAll(Arrays.asList(user1, user2));
 

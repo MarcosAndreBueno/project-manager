@@ -12,12 +12,14 @@ public class User {
 
     private String name;
 
-    private String team;
+    @ManyToOne()
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     public User() {
     }
 
-    public User(Long id, String name, String team) {
+    public User(Long id, String name, Team team) {
         this.id = id;
         this.name = name;
         this.team = team;
@@ -39,11 +41,11 @@ public class User {
         this.name = name;
     }
 
-    public String getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(String team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 }

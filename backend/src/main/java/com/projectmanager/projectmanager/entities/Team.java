@@ -1,9 +1,8 @@
 package com.projectmanager.projectmanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Team {
@@ -13,6 +12,9 @@ public class Team {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private Set<User> user;
 
     public Team() {
     }
