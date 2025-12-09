@@ -1,5 +1,6 @@
 package com.projectmanager.projectmanager.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -13,6 +14,7 @@ public class Team {
 
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private Set<User> user;
 
@@ -38,5 +40,13 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<User> getUser() {
+        return user;
+    }
+
+    public void setUser(Set<User> user) {
+        this.user = user;
     }
 }
