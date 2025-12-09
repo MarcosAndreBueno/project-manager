@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserController {
@@ -15,7 +17,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public User[] getUsers() {
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 }

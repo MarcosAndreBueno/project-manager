@@ -26,6 +26,9 @@ public class Ticket {
 
     private Long[] childTickets;
 
+    public Ticket() {
+    }
+
     public Ticket(Long id, String title, String description, String status, String createdBy, Date createdIn, Long[] childTickets) {
         this.id = id;
         this.title = title;

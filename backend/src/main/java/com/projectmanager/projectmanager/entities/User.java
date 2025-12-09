@@ -14,6 +14,9 @@ public class User {
 
     private String team;
 
+    public User() {
+    }
+
     public User(Long id, String name, String team) {
         this.id = id;
         this.name = name;

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/tickets")
 public class TicketController {
@@ -15,7 +17,7 @@ public class TicketController {
     TicketService ticketService;
 
     @GetMapping
-    public Ticket[] getTickets() {
+    public List<Ticket> getTickets() {
         return ticketService.getTickets();
     }
 }
