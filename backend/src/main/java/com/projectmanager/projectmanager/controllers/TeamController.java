@@ -1,12 +1,10 @@
 package com.projectmanager.projectmanager.controllers;
 
 import com.projectmanager.projectmanager.entities.Team;
+import com.projectmanager.projectmanager.entities.UserConfig;
 import com.projectmanager.projectmanager.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,11 @@ public class TeamController {
 
     @GetMapping
     public List<Team> getTeams() {
-        return teamService.getTeams();
+        return teamService.findAll();
+    }
+
+    @GetMapping(value = "/{id}")
+    public Team findById(@PathVariable Long id) {
+        return teamService.findById(id);
     }
 }

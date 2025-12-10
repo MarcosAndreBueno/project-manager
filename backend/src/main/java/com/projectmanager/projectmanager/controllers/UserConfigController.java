@@ -18,7 +18,7 @@ public class UserConfigController {
     UserConfigService userConfigService;
 
     @GetMapping(value = "/{id}")
-    public Optional<UserConfig> getConfigByUser(@PathVariable Long id) {
-        return userConfigService.getConfigByUser(id);
+    public UserConfig findById(@PathVariable Long id) {
+        return userConfigService.findById(id);
     }
 }

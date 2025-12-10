@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeamService {
@@ -13,7 +14,12 @@ public class TeamService {
     @Autowired
     TeamRepository teamRepository;
 
-    public List<Team> getTeams() {
+    public List<Team> findAll() {
         return teamRepository.findAll();
+    }
+
+    public Team findById(Long id) {
+        Optional<Team> obj = teamRepository.findById(id);
+        return obj.get();
     }
 }

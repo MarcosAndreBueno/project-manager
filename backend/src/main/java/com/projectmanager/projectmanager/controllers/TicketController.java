@@ -3,10 +3,7 @@ package com.projectmanager.projectmanager.controllers;
 import com.projectmanager.projectmanager.entities.Ticket;
 import com.projectmanager.projectmanager.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public class TicketController {
 
     @GetMapping
     public List<Ticket> getTickets() {
-        return ticketService.getTickets();
+        return ticketService.findAll();
+    }
+
+    @GetMapping(value = "/{id}")
+    public Ticket findById(@PathVariable Long id) {
+        return ticketService.findById(id);
     }
 }
