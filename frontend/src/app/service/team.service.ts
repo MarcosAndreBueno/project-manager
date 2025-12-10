@@ -17,7 +17,8 @@ export class TeamService {
         return this.httpClient.get<Team[]>(`${this.API}/teams`);
     }
 
-    public getTeamsByUser(userTeamId: number): Team | undefined {
-        return teamList.find(t => t.id === userTeamId);
+    public getTeamsById(teamId: number): Observable<Team> {
+        return this.httpClient.get<Team>(`${this.API}/teams/${teamId}`);
     }
 }
+

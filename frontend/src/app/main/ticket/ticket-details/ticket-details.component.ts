@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { Ticket } from '../../../entities/ticket';
 import { StatusService } from '../../../service/status.service';
 import { TicketService } from '../../../service/ticket.service';
@@ -15,8 +15,8 @@ import { TicketStatus } from '../../../entities/ticket-status';
   styleUrl: './ticket-details.component.scss'
 })
 export class TicketDetailsComponent implements OnInit {
-  public tickets?: Ticket;
-  public childTickets?: Ticket[];
+  public ticket!: Ticket;
+  public childTickets$!: Observable<Ticket[]>;
   public statusEnums$: Observable<TicketStatus[]> = of([]);
 
   constructor(
@@ -34,18 +34,19 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   private getTicketDetailsData(id: number): void {
-    this.tickets = this.ticketService.getTicketById(id);
-
-    if (this.tickets?.childTicketsId) {
-      this.childTickets = this.ticketService.getChildTickets(this.tickets.childTicketsId);
-    }
-
+    this.ticketService.getTicketById(id).subscribe(
+      t => {
+        this.childTickets$ = this.ticketService.getChildTickets(t.childTicketsId),
+        this.ticket = t;
+      }
+    )
+    
     this.statusEnums$ = this.statusService.getStatusEnums();
   }
 
   public changeStatus(status: TicketStatus): void {
-    if (this.tickets) {
-      this.tickets.status.id = status.id;
+    if (this.ticket) {
+      this.ticket.status.id = status.id;
     }
   }
 }

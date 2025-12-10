@@ -17,7 +17,7 @@ export class UserService {
         return this.httpClient.get<User[]>(`${this.API}/users`);
     }
 
-    public getUserById(id: number): User | undefined {
-        return userList.find(u => u.id === id);
+    public getUserById(id: number): Observable<User> {
+        return this.httpClient.get<User>(`${this.API}/users/${id}`);
     }
 }
