@@ -32,7 +32,7 @@
 
     <!--Col content-->
     <div class="row">
-        @for (status of kanbanColConfig; track status) {
+        @for (status of kanbanColConfig; track status.id) {
         <div class="col mt-3 me-1 border border-2">
             <div class="d-flex justify-content-between">
                 <button class="btn" (click)="moveCol('left', status)">
@@ -67,5 +67,6 @@
             }
         </div>
         }
+        
     </div>
 </section>

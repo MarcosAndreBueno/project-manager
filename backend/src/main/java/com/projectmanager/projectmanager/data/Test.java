@@ -1,13 +1,7 @@
 package com.projectmanager.projectmanager.data;
 
-import com.projectmanager.projectmanager.entities.Team;
-import com.projectmanager.projectmanager.entities.Ticket;
-import com.projectmanager.projectmanager.entities.TicketStatus;
-import com.projectmanager.projectmanager.entities.User;
-import com.projectmanager.projectmanager.repositories.TeamRepository;
-import com.projectmanager.projectmanager.repositories.TicketRepository;
-import com.projectmanager.projectmanager.repositories.TicketStatusRepository;
-import com.projectmanager.projectmanager.repositories.UserRepository;
+import com.projectmanager.projectmanager.entities.*;
+import com.projectmanager.projectmanager.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +9,8 @@ import org.springframework.context.annotation.Profile;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Configuration
 @Profile("test")
@@ -32,6 +28,9 @@ public class Test implements CommandLineRunner {
     @Autowired
     TicketStatusRepository ticketStatusRepository;
 
+    @Autowired
+    UserConfigRepository userConfigRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Team team1 = new Team(null, "Team 1");
@@ -41,6 +40,10 @@ public class Test implements CommandLineRunner {
         User user1 = new User(null, "User 1", team1);
         User user2 = new User(null, "User 2", team1);
         userRepository.saveAll(Arrays.asList(user1, user2));
+
+        UserConfig config1 = new UserConfig(user1, Set.of(1,2));
+        UserConfig config2 = new UserConfig(user2, Set.of(1,2));
+        userConfigRepository.saveAll(Arrays.asList(config1, config2));
 
         TicketStatus tickSt1 = new TicketStatus(null, "OPEN");
         TicketStatus tickSt2 = new TicketStatus(null, "IN_PROGRESS");

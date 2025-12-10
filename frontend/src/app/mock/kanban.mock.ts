@@ -1,6 +1,8 @@
-import { Kanban } from "../entities/config";
+import { UserConfig } from "../entities/user-config";
 import { ticketStatus } from "./ticket-status.mock";
+import { userList } from "./user.mock";
 
-export let kanbanConfig: Kanban = {
-    colConfig: [ticketStatus[0], ticketStatus[1], ticketStatus[5], ticketStatus[7]]
+export let kanbanConfig: UserConfig = {
+    user: userList[0],
+    kanbanColConfig: [ticketStatus[0], ticketStatus[1], ticketStatus[5], ticketStatus[7]]
 };
