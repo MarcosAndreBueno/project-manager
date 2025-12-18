@@ -54,10 +54,16 @@ public class Test implements CommandLineRunner {
         TicketStatus tickSt7 = new TicketStatus(null, "DONE");
         ticketStatusRepository.saveAll(Arrays.asList(tickSt1, tickSt2, tickSt3, tickSt4, tickSt5, tickSt6, tickSt7));
 
-        Ticket ticket1 = new Ticket(null, "Ticket 1", "Description 1",
+        Ticket childTicket1 = new Ticket(null, "Child Ticket of 1", "Child Ticket 1 Description",
                 tickSt1, user1, new Date(), new Long[0]);
+        ticketRepository.saveAll(Arrays.asList(childTicket1));
+
+        Ticket ticket1 = new Ticket(null, "Ticket 1", "Description 1",
+                tickSt1, user1, new Date(), new Long[]{childTicket1.getId()});
         Ticket ticket2 = new Ticket(null, "Ticket 2", "Description 2",
                 tickSt1, user1, new Date(), new Long[0]);
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
+
+
     }
 }

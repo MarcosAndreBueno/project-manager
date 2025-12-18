@@ -3,19 +3,19 @@
         <div class="row">
             <div class="col-8">
                 <div class="mt-5 text-center">
+                    @if (ticket) {
                     <h1> {{ ticket.title }} </h1>
                     <div class="row justify-content-center">
                         <p class="col-6 mt-2"> {{ ticket.description }} </p>
                     </div>
 
-                    @if (ticket) {
                     @for(childTicket of (childTickets$ | async); track childTicket.id) {
                     <div class="row justify-content-center">
                         <p class="col-1 mt-2"> {{ childTicket.id }} </p>
                         <p class="col-2 mt-2"> {{ childTicket.title }} </p>
                         <p class="col-4 mt-2"> {{ childTicket.description }} </p>
                         <span class="col-2 mt-2">
-                            <a [routerLink]="['/ticket-details', childTicket.id]" > Link </a>
+                            <a [routerLink]="['/ticket-details', childTicket.id]"> Link </a>
                         </span>
                         <span class="col-1 mt-2">
                             <button class="btn btn-sm btn-outline-danger">
@@ -27,18 +27,21 @@
                     }
                 </div>
             </div>
+            @if(ticket) {
             <div class="col-4 mt-5">
                 <div class="d-flex">
                     <h4 class="mb-3"> Status: </h4>
                     <div class="dropdown ms-5 flex-sm-row">
                         <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            {{ ticket.status }}
+                            {{ ticket.status.name }}
                         </button>
+
+
                         <ul class="dropdown-menu">
-                            @for (status of (statusEnums$ | async); track status) {
+                            @for (status of (statusEnums$ | async); track status.id) {
                             <li>
                                 <button (click)="changeStatus(status)" class="dropdown-item">
-                                    {{ status }}
+                                    {{ status.name }}
                                 </button>
                             </li>
                             }
@@ -54,6 +57,7 @@
                     <h5 class="ms-5"> {{ ticket.createdIn | date: 'yyyy/MM/dd z' }} </h5>
                 </div>
             </div>
+            }
         </div>
     </div>
 </section>

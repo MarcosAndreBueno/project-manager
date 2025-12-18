@@ -85,7 +85,7 @@ export class TicketNewComponent implements OnInit {
         team: new FormControl<Team | null>(null),
       }),
       createdIn: new FormControl<Date>(this.today),
-      childTicketsId: new FormControl<number[]>([]),
+      childTickets: new FormControl<number[]>([]),
     })
 
     console.log(this.form);

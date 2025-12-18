@@ -8,5 +8,5 @@ export interface Ticket {
     status: TicketStatus,
     createdBy: User,
     createdIn: Date,
-    childTicketsId: number[],
+    childTickets: number[],
 };

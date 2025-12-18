@@ -36,7 +36,7 @@ export class TicketDetailsComponent implements OnInit {
   private getTicketDetailsData(id: number): void {
     this.ticketService.getTicketById(id).subscribe(
       t => {
-        this.childTickets$ = this.ticketService.getChildTickets(t.childTicketsId),
+        this.childTickets$ = this.ticketService.getChildTickets(t.childTickets),
         this.ticket = t;
       }
     )
