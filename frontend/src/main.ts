@@ -3,7 +3,7 @@ import  routeConfig from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { importProvidersFrom } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 
 bootstrapApplication(AppComponent, {
