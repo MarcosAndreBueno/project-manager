@@ -3,6 +3,7 @@ package com.projectmanager.projectmanager.services;
 import com.projectmanager.projectmanager.entities.Team;
 import com.projectmanager.projectmanager.entities.UserConfig;
 import com.projectmanager.projectmanager.repositories.UserConfigRepository;
+import com.projectmanager.projectmanager.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,6 @@ public class UserConfigService {
 
     public UserConfig findById(Long id) {
         Optional<UserConfig> obj = userConfigRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }

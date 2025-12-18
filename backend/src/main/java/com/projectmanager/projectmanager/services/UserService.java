@@ -3,6 +3,7 @@ package com.projectmanager.projectmanager.services;
 import com.projectmanager.projectmanager.entities.Team;
 import com.projectmanager.projectmanager.entities.User;
 import com.projectmanager.projectmanager.repositories.UserRepository;
+import com.projectmanager.projectmanager.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,6 @@ public class UserService {
 
     public User findById(Long id) {
         Optional<User> obj = userRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }

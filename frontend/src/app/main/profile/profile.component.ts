@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Ticket } from '../../entities/ticket';
 import { User } from '../../entities/user';
 import { TicketService } from '../../service/ticket.service';

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { delay, Observable, switchMap } from 'rxjs';
 import { Team } from '../../../entities/team';
 import { Ticket } from '../../../entities/ticket';
 import { TicketStatus } from '../../../entities/ticket-status';
@@ -9,7 +10,6 @@ import { ticketStatus } from '../../../mock/ticket-status.mock';
 import { TeamService } from '../../../service/team.service';
 import { UserService } from '../../../service/user.service';
 import { ModelFormGroup } from '../../../utils/model-form-group';
-import { delay, map, Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-ticket-new',

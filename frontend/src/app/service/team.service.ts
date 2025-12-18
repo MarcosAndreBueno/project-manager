@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Team } from "../entities/team";
-import { teamList } from "../mock/team.mock";
 
 @Injectable({
     providedIn: 'root'

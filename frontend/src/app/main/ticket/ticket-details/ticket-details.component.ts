@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Ticket } from '../../../entities/ticket';
+import { TicketStatus } from '../../../entities/ticket-status';
 import { StatusService } from '../../../service/status.service';
 import { TicketService } from '../../../service/ticket.service';
-import { TicketStatus } from '../../../entities/ticket-status';
 
 @Component({
   selector: 'app-ticket-details',

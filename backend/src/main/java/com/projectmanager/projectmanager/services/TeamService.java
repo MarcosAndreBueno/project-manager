@@ -2,6 +2,7 @@ package com.projectmanager.projectmanager.services;
 
 import com.projectmanager.projectmanager.entities.Team;
 import com.projectmanager.projectmanager.repositories.TeamRepository;
+import com.projectmanager.projectmanager.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,6 @@ public class TeamService {
 
     public Team findById(Long id) {
         Optional<Team> obj = teamRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }

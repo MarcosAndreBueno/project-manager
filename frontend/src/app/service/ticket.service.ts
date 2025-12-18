@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { filter, forkJoin, map, Observable, of } from "rxjs";
+import { forkJoin, map, Observable } from "rxjs";
 import { Ticket } from "../entities/ticket";
-import { ticketList } from "../mock/tickets-details.mock";
 
 @Injectable({
     providedIn: 'root'

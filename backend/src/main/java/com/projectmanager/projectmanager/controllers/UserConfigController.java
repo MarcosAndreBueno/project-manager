@@ -1,8 +1,10 @@
 package com.projectmanager.projectmanager.controllers;
 
+import com.projectmanager.projectmanager.entities.TicketStatus;
 import com.projectmanager.projectmanager.entities.UserConfig;
 import com.projectmanager.projectmanager.services.UserConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,8 @@ public class UserConfigController {
     UserConfigService userConfigService;
 
     @GetMapping(value = "/{id}")
-    public UserConfig findById(@PathVariable Long id) {
-        return userConfigService.findById(id);
+    public ResponseEntity<UserConfig> findById(@PathVariable Long id) {
+        UserConfig obj = userConfigService.findById(id);
+        return ResponseEntity.ok().body(obj);
     }
 }

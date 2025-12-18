@@ -4,6 +4,7 @@ import com.projectmanager.projectmanager.entities.Ticket;
 import com.projectmanager.projectmanager.entities.TicketStatus;
 import com.projectmanager.projectmanager.services.TicketStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,14 @@ public class TicketStatusController {
     TicketStatusService ticketStatusService;
 
     @GetMapping
-    public List<TicketStatus> getTicketStatus() {
-        return ticketStatusService.findAll();
+    public ResponseEntity<List<TicketStatus>> findAll() {
+        List<TicketStatus> ticketsStatus = ticketStatusService.findAll();
+        return ResponseEntity.ok().body(ticketsStatus);
     }
 
     @GetMapping(value = "/{id}")
-    public TicketStatus findById(@PathVariable Integer id) {
-        return ticketStatusService.findById(id);
+    public ResponseEntity<TicketStatus> findById(@PathVariable Integer id) {
+        TicketStatus obj = ticketStatusService.findById(id);
+        return ResponseEntity.ok().body(obj);
     }
 }
