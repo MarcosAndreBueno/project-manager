@@ -3,6 +3,7 @@ package com.projectmanager.projectmanager.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -50,5 +51,17 @@ public class TicketStatus {
 
     public void setTicket(Set<Ticket> ticket) {
         this.ticket = ticket;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TicketStatus that = (TicketStatus) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(ticket, that.ticket);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, ticket);
     }
 }

@@ -16,7 +16,7 @@ import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
-  public user$!: Observable<User>;
+  public user?: User;
   public tickets$!: Observable<Ticket[]>;
 
   public descriptionLimit: number = 70;
@@ -28,7 +28,9 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user$ = this.userService.getUserById(1);
-    this.tickets$ = this.ticketService.getTicketByUserId(1);
+    this.userService.getUserById(1).subscribe(u => {
+      this.user = u;
+      this.tickets$ = this.ticketService.getTicketByUserId(u.id);
+    });
   }
 }

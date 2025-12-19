@@ -6,9 +6,9 @@
             Add column
         </button>
         <ul class="dropdown-menu">
-            @for (status of (statusEnums$ | async); track status) {
+            @for (status of statusEnums; track status) {
             <li class="dropdown-item">
-                <button (click)="addColumn(status)">{{ status.name }}</button>
+                <button (click)="addColumn(status.id)">{{ status.name }}</button>
             </li>
             }
         </ul>
@@ -21,9 +21,9 @@
                 Remove column
             </button>
             <ul class="dropdown-menu">
-                @for (status of (statusEnums$ | async); track status) {
+                @for (status of statusEnums; track status) {
                 <li class="dropdown-item">
-                    <button (click)="removeColumn(status)">{{ status.name }}</button>
+                    <button (click)="removeColumn(status.id)">{{ status.name }}</button>
                 </li>
                 }
             </ul>
@@ -32,20 +32,20 @@
 
     <!--Col content-->
     <div class="row">
-        @for (status of kanbanColConfig; track status.id) {
+        @for (status of kanbanColConfig; track status; let i = $index) {
         <div class="col mt-3 me-1 border border-2">
             <div class="d-flex justify-content-between">
-                <button class="btn" (click)="moveCol('left', status)">
+                <button class="btn" (click)="moveKanbanColLeft(i)">
                     <i class="bi bi-arrow-left-circle-fill text-light"></i>
                 </button>
-                <h6 class="mt-2">{{ status.name }}</h6>
-                <button class="btn" (click)="moveCol('right', status)">
+                <h6 class="mt-2">{{ statusEnums[status-1].name }}</h6> <!-- statusEnums start at 0, status at 1 -->
+                <button class="btn" (click)="moveKanbanColRight(i)">
                     <i class="bi bi-arrow-right-circle-fill text-light"></i>
                 </button>
             </div>
             @for (ticket of (tickets$ | async); track ticket.id) {
             <div class="mt-3">
-                @if (ticket.status.id == status.id) {
+                @if (ticket.status.id == status) {
                 <div class="mt-5">
                     <div class="border border-secondary rounded">
                         <p class="ms-1">{{ ticket.id }}</p>
@@ -67,6 +67,6 @@
             }
         </div>
         }
-        
+
     </div>
 </section>

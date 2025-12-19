@@ -4,5 +4,5 @@ import { userList } from "./user.mock";
 
 export let kanbanConfig: UserConfig = {
     user: userList[0],
-    kanbanColConfig: [ticketStatus[0], ticketStatus[1], ticketStatus[5], ticketStatus[7]]
+    kanbanColConfig: [0, 1, 5, 7]
 };

@@ -41,8 +41,8 @@ public class Test implements CommandLineRunner {
         User user2 = new User(null, "User 2", team1);
         userRepository.saveAll(Arrays.asList(user1, user2));
 
-        UserConfig config1 = new UserConfig(user1, Set.of(1,2));
-        UserConfig config2 = new UserConfig(user2, Set.of(1,2));
+        UserConfig config1 = new UserConfig(user1, Set.of(1,2,4,6));
+        UserConfig config2 = new UserConfig(user2, Set.of(1,2,5,4));
         userConfigRepository.saveAll(Arrays.asList(config1, config2));
 
         TicketStatus tickSt1 = new TicketStatus(null, "OPEN");
@@ -63,7 +63,5 @@ public class Test implements CommandLineRunner {
         Ticket ticket2 = new Ticket(null, "Ticket 2", "Description 2",
                 tickSt1, user1, new Date(), new Long[0]);
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
-
-
     }
 }

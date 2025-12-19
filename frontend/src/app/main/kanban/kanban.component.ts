@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from "@angular/router";
-import { combineLatest, Observable, of } from 'rxjs';
+import { combineLatest, delay, Observable, of } from 'rxjs';
 import { Ticket } from '../../entities/ticket';
 import { TicketStatus } from '../../entities/ticket-status';
 import { UserConfig } from '../../entities/user-config';
@@ -19,9 +19,9 @@ import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
 })
 export class KanbanComponent implements OnInit {
 
-  public statusEnums$: Observable<TicketStatus[]> = of([]);
-  public userConfiguration$: Observable<UserConfig> = of();
-  public kanbanColConfig?: TicketStatus[];
+  public statusEnums!: TicketStatus[];
+  public userConfiguration?: UserConfig;
+  public kanbanColConfig: number[] = [];
   public tickets$: Observable<Ticket[]> = of([]);
 
   public descriptionLimit: number = 70;
@@ -35,56 +35,42 @@ export class KanbanComponent implements OnInit {
 
   ngOnInit(): void {
     this.tickets$ = this.ticketService.getTickets();
-    this.statusEnums$ = this.statusService.getStatusEnums();
-    this.userConfiguration$ = this.configService.getUserConfigurations(1);
 
-    combineLatest([this.statusEnums$, this.userConfiguration$]).subscribe(
-      ([allStatus, userConfig]) => {
-
-        // s = s.id (backend só está enviando id)
-        const selectedIds = userConfig.kanbanColConfig.map(s => Number(s));
-
-        // filtrar os status completos baseado nos ids
-        this.kanbanColConfig = allStatus.filter(
-          status => selectedIds.includes(status.id)
-        );
-      }
-    );
+    this.statusService.getStatusEnums().subscribe(s => {
+      this.statusEnums = s;
+    });
+    this.configService.getUserConfigurations(1).pipe(delay(1000)).subscribe(config => {
+      this.userConfiguration = config;
+      this.kanbanColConfig = this.userConfiguration.kanbanColConfig;
+    });
   }
 
-  addColumn(status: TicketStatus) {
-    if (this.kanbanColConfig) {
-      if (!this.kanbanColConfig.find(s => s == status)) {
-        this.kanbanColConfig.push(status);
-      }
+  addColumn(id: number) {
+    if (this.kanbanColConfig.indexOf(id) == -1) {
+      this.kanbanColConfig.push(id);
     }
   }
 
-  removeColumn(status: TicketStatus) {
-    if (this.kanbanColConfig) {
-      this.kanbanColConfig = this.kanbanColConfig.filter(s => s !== status);
+  removeColumn(id: number) {
+    if (this.kanbanColConfig.indexOf(id) > -1) {
+      const i = this.kanbanColConfig.indexOf(id);
+      this.kanbanColConfig.splice(i, 1);
     }
   }
 
-  moveCol(direction: string, status: TicketStatus) {
-    if (this.kanbanColConfig) {
-      if (direction == 'left') {
-        let index = this.kanbanColConfig.findIndex(s => s == status);
+  public moveKanbanColLeft(index: number) {
+    if (index - 1 >= 0) {
+      let aux = this.kanbanColConfig[index];
+      this.kanbanColConfig[index] = this.kanbanColConfig[index - 1];
+      this.kanbanColConfig[index - 1] = aux;
+    }
+  }
 
-        if (index != 0) {
-          let prevStatus = this.kanbanColConfig.at(index - 1);
-          this.kanbanColConfig[index] = prevStatus!;
-          this.kanbanColConfig[index - 1] = status;
-        }
-      } else {
-        let index = this.kanbanColConfig.findIndex(s => s == status);
-
-        if (index != this.kanbanColConfig.length - 1) {
-          let nextStatus = this.kanbanColConfig.at(index + 1);
-          this.kanbanColConfig[index] = nextStatus!;
-          this.kanbanColConfig[index + 1] = status;
-        }
-      }
+  public moveKanbanColRight(index: number) {
+    if (index < this.kanbanColConfig.length - 1) {
+      let aux = this.kanbanColConfig[index];
+      this.kanbanColConfig[index] = this.kanbanColConfig[index + 1];
+      this.kanbanColConfig[index + 1] = aux;
     }
   }
 }

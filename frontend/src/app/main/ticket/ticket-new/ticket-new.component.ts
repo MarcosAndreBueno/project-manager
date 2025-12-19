@@ -37,34 +37,29 @@ export class TicketNewComponent implements OnInit {
   ngOnInit(): void {
     this.id++;
 
-    let activeUser$: Observable<User>;
-    let activeUserTeam$: Observable<Team>;
+    let activeUser: User | null = null;
+    let activeUserTeam: Team | null = null;
 
     //get user then get team from user.team.id
-    activeUser$ = this.userService.getUserById(1);
-    activeUserTeam$ = activeUser$.pipe(
-      switchMap(user => this.teamService.getTeamsById(user.team.id))
-    );
+    this.userService.getUserById(1).subscribe(u => {
+      this.teamService.getTeamsById(u.team.id).subscribe(t => {
+        activeUserTeam = t;
+        //update team
+        this.form.patchValue({
+          createdBy: {
+            team: activeUserTeam
+          }
+        });
+      })
 
-    //update form
-    activeUser$.pipe(delay(3000)).subscribe(user => {
+      //update user
       this.form.patchValue({
         createdBy: {
-          id: user.id,
-          name: user.name,
+          id: u.id,
+          name: u.name,
         }
       });
-      console.log(user);
-    });
 
-    //update form
-    activeUserTeam$.pipe(delay(3000)).subscribe(team => {
-      this.form.patchValue({
-        createdBy: {
-          team: team
-        }
-      });
-      console.log(team);
     });
 
     //initializing form
@@ -86,9 +81,7 @@ export class TicketNewComponent implements OnInit {
       }),
       createdIn: new FormControl<Date>(this.today),
       childTickets: new FormControl<number[]>([]),
-    })
-
-    console.log(this.form);
+    });
   }
 
   get title() {

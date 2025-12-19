@@ -7,6 +7,7 @@ import com.projectmanager.projectmanager.services.exceptions.ResourceNotFoundExc
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,11 @@ public class TicketStatusService {
     TicketStatusRepository ticketStatusRepository;
 
     public List<TicketStatus> findAll() {
-        return ticketStatusRepository.findAll();
+        List<TicketStatus> ticketStatuses = ticketStatusRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(TicketStatus::getId))
+                .toList();
+        return ticketStatuses;
     }
 
     public TicketStatus findById(Integer id) {

@@ -35,10 +35,8 @@
                         <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
                             {{ ticket.status.name }}
                         </button>
-
-
                         <ul class="dropdown-menu">
-                            @for (status of (statusEnums$ | async); track status.id) {
+                            @for (status of statusEnums; track status.id) {
                             <li>
                                 <button (click)="changeStatus(status)" class="dropdown-item">
                                     {{ status.name }}

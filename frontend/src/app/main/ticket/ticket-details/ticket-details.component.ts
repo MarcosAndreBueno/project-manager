@@ -17,7 +17,7 @@ import { TicketService } from '../../../service/ticket.service';
 export class TicketDetailsComponent implements OnInit {
   public ticket!: Ticket;
   public childTickets$!: Observable<Ticket[]>;
-  public statusEnums$: Observable<TicketStatus[]> = of([]);
+  public statusEnums: TicketStatus[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +41,9 @@ export class TicketDetailsComponent implements OnInit {
       }
     )
     
-    this.statusEnums$ = this.statusService.getStatusEnums();
+    this.statusService.getStatusEnums().subscribe(
+      st => this.statusEnums = st
+    );
   }
 
   public changeStatus(status: TicketStatus): void {
