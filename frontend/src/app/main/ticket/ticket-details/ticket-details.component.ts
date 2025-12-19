@@ -48,7 +48,8 @@ export class TicketDetailsComponent implements OnInit {
 
   public changeStatus(status: TicketStatus): void {
     if (this.ticket) {
-      this.ticket.status.id = status.id;
+      this.ticket.status = status;
     }
   }
 }
+
