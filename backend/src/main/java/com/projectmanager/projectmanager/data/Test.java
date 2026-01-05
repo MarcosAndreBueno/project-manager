@@ -1,3 +1,4 @@
+/*
 package com.projectmanager.projectmanager.data;
 
 import com.projectmanager.projectmanager.entities.*;
@@ -65,3 +66,4 @@ public class Test implements CommandLineRunner {
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2));
     }
 }
+*/
