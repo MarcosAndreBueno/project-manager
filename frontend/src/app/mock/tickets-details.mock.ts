@@ -11,7 +11,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[1],
     createdIn: new Date(),
-    childTicketsId: [2, 3, 4, 5]
+    childTickets: [2, 3, 4, 5]
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[9],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[10],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[11],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[0],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- EPIC 2 -------
@@ -58,7 +58,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[4],
     createdIn: new Date(),
-    childTicketsId: [7, 8, 9, 10]
+    childTickets: [7, 8, 9, 10]
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[5],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 8,
@@ -76,7 +76,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[0],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 9,
@@ -85,7 +85,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[7],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 10,
@@ -94,7 +94,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[8],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- EPIC 3 -------
@@ -105,7 +105,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[17],
     createdIn: new Date(),
-    childTicketsId: [12, 13, 14, 15]
+    childTickets: [12, 13, 14, 15]
   },
   {
     id: 12,
@@ -114,7 +114,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[18],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 13,
@@ -123,7 +123,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[19],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 14,
@@ -132,7 +132,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[16],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 15,
@@ -141,7 +141,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[13],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- EPIC 4 -------
@@ -152,7 +152,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[9],
     createdIn: new Date(),
-    childTicketsId: [17, 18, 19, 20]
+    childTickets: [17, 18, 19, 20]
   },
   {
     id: 17,
@@ -161,7 +161,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[3],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 18,
@@ -170,7 +170,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[2],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 19,
@@ -179,7 +179,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[1],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 20,
@@ -188,7 +188,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[12],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- EPIC 5 -------
@@ -199,7 +199,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[14],
     createdIn: new Date(),
-    childTicketsId: [22, 23, 24, 25]
+    childTickets: [22, 23, 24, 25]
   },
   {
     id: 22,
@@ -208,7 +208,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[13],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 23,
@@ -217,7 +217,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[15],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 24,
@@ -226,7 +226,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[16],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 25,
@@ -235,7 +235,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[14],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- EPIC 6 -------
@@ -246,7 +246,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[11],
     createdIn: new Date(),
-    childTicketsId: [27, 28, 29, 30]
+    childTickets: [27, 28, 29, 30]
   },
   {
     id: 27,
@@ -255,7 +255,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[10],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 28,
@@ -264,7 +264,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[0],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 29,
@@ -273,7 +273,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[9],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 30,
@@ -282,7 +282,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[5],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- Extra tickets: bugs + tasks (10 itens) -------
@@ -293,7 +293,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[7],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 32,
@@ -302,7 +302,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[8],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 33,
@@ -311,7 +311,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[9],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 34,
@@ -320,7 +320,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[3],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 35,
@@ -329,7 +329,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[5],
     createdBy: userList[1],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 36,
@@ -338,7 +338,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[4],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 37,
@@ -347,7 +347,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[6],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 38,
@@ -356,7 +356,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[19],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 39,
@@ -365,7 +365,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[17],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 40,
@@ -374,7 +374,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[18],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
 
   // ------- Últimos 10 para completar 50 -------
@@ -385,7 +385,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[2],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 42,
@@ -394,7 +394,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[5],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 43,
@@ -403,7 +403,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[7],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 44,
@@ -412,7 +412,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[8],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 45,
@@ -421,7 +421,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[10],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 46,
@@ -430,7 +430,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[11],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 47,
@@ -439,7 +439,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[13],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 48,
@@ -448,7 +448,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[6],
     createdBy: userList[14],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 49,
@@ -457,7 +457,7 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[0],
     createdBy: userList[0],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   },
   {
     id: 50,
@@ -466,6 +466,6 @@ export const ticketList: Ticket[] = [
     status: ticketStatus[1],
     createdBy: userList[16],
     createdIn: new Date(),
-    childTicketsId: []
+    childTickets: []
   }
 ];
