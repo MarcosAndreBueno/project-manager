@@ -5,7 +5,16 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/backend/pom.xml" />
+        <option value="$PROJECT_DIR$/team-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ticket-service/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/backend/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="22" project-jdk-type="JavaSDK">
