@@ -1,0 +1,55 @@
+package com.projectmanager.ticket.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.Objects;
+import java.util.Set;
+
+@Entity
+@Table(name = "ticket_status")
+public class TicketStatus {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "status", cascade = CascadeType.ALL)
+    private Set<Ticket> ticket;
+
+    public TicketStatus() {
+    }
+
+    public TicketStatus(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Ticket> getTicket() {
+        return ticket;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TicketStatus that = (TicketStatus) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(ticket, that.ticket);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, ticket);
+    }
+}
