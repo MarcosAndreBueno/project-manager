@@ -6,13 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="projectmanager-app" />
+        <module name="team-service" />
+        <module name="ticket-service" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="projectmanager-app" target="25" />
+      <module name="user-service (1)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="projectmanager-app" options="-parameters" />
+      <module name="team-service" options="-parameters" />
+      <module name="ticket-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="user-service (1)" options="-parameters" />
     </option>
   </component>
 </project>
