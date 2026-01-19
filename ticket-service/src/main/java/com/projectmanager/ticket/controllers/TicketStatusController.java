@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/tickets/status")
-@CrossOrigin
 public class TicketStatusController {
 
     @Autowired

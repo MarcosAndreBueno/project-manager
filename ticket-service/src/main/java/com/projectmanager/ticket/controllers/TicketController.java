@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/tickets")
-@CrossOrigin
 public class TicketController {
 
     @Autowired

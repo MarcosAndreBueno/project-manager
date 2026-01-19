@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/teams")
-@CrossOrigin
 public class TeamController {
 
     @Autowired
