@@ -1,5 +1,18 @@
 version: '3'
 services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4200:4200"
+    depends_on:
+      - ticket-service
+      - user-service
+      - team-service
+    networks:
+      - app-network
   ticket-service:
     build:
       context: .
@@ -8,7 +21,7 @@ services:
       - "8080:8080"
     restart: unless-stopped
     networks:
-      - loki
+      - app-network
   user-service:
     build:
       context: .
@@ -17,7 +30,7 @@ services:
       - "8081:8081"
     restart: unless-stopped
     networks:
-      - loki
+      - app-network
   team-service:
     build:
       context: .
@@ -26,7 +39,7 @@ services:
       - "8082:8082"
     restart: unless-stopped
     networks:
-      - loki
+      - app-network
 
   prometheus:
     image: prom/prometheus:v2.44.0
@@ -79,7 +92,5 @@ services:
 
 networks:
   loki:
-
-
-
-
+  app-network:
+    driver: bridge
