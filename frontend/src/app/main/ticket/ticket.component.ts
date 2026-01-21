@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Ticket } from '../../entities/ticket';
 import { TicketService } from '../../service/ticket.service';
 import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
+import { TicketStatus } from '../../entities/ticket-status';
 
 @Component({
   selector: 'app-ticket',
@@ -16,11 +17,12 @@ import { NormalizeStringIfExceeded } from '../../utils/filtro.pipe';
 export class TicketComponent implements OnInit {
 
   public tickets$: Observable<Ticket[]> = of([]);
+  public ticketStatus$: Observable<TicketStatus[]> = of([]);
   public descriptionLimit: number = 70;
   public titleLimit: number = 50;
 
   constructor(
-    private ticketService: TicketService,
+    private ticketService: TicketService
   ) { }
 
   ngOnInit(): void {

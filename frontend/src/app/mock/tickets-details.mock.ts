@@ -9,7 +9,7 @@ export const ticketList: Ticket[] = [
     title: "Improve authentication module ",
     description: "Epic: Modernize authentication flow and increase security.",
     status: ticketStatus[0],
-    createdBy: userList[1],
+    createdBy: userList[1].id,
     createdIn: new Date(),
     childTickets: [2, 3, 4, 5]
   },
@@ -18,7 +18,7 @@ export const ticketList: Ticket[] = [
     title: "Add JWT token refresh endpoint",
     description: "Implement refresh-token API with expiration validation.",
     status: ticketStatus[0],
-    createdBy: userList[9],
+    createdBy: userList[9].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -27,7 +27,7 @@ export const ticketList: Ticket[] = [
     title: "Refactor login controller",
     description: "Clean up legacy login flow and remove unused logic.",
     status: ticketStatus[1],
-    createdBy: userList[10],
+    createdBy: userList[10].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -36,7 +36,7 @@ export const ticketList: Ticket[] = [
     title: "Implement failed login rate-limiting",
     description: "Add per-user and per-IP rate limiting rules.",
     status: ticketStatus[0],
-    createdBy: userList[11],
+    createdBy: userList[11].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -45,7 +45,7 @@ export const ticketList: Ticket[] = [
     title: "Create unit tests for authentication service.",
     description: "Increase coverage for authentication utils and services.",
     status: ticketStatus[1],
-    createdBy: userList[0],
+    createdBy: userList[0].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -56,7 +56,7 @@ export const ticketList: Ticket[] = [
     title: "Frontend UI redesign",
     description: "Epic: Update layout following new design guidelines.",
     status: ticketStatus[1],
-    createdBy: userList[4],
+    createdBy: userList[4].id,
     createdIn: new Date(),
     childTickets: [7, 8, 9, 10]
   },
@@ -65,7 +65,7 @@ export const ticketList: Ticket[] = [
     title: "Update navigation sidebar layout",
     description: "Implement new spacing and icons as per Figma design.",
     status: ticketStatus[0],
-    createdBy: userList[5],
+    createdBy: userList[5].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -74,7 +74,7 @@ export const ticketList: Ticket[] = [
     title: "Refactor dashboard components",
     description: "Break down container components into smaller units.",
     status: ticketStatus[1],
-    createdBy: userList[0],
+    createdBy: userList[0].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -83,7 +83,7 @@ export const ticketList: Ticket[] = [
     title: "Improve form validation UX",
     description: "Add inline validation messages and highlight invalid fields.",
     status: ticketStatus[0],
-    createdBy: userList[7],
+    createdBy: userList[7].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -92,7 +92,7 @@ export const ticketList: Ticket[] = [
     title: "Replace deprecated CSS utilities",
     description: "Remove old variables and adopt new global theme tokens.",
     status: ticketStatus[6],
-    createdBy: userList[8],
+    createdBy: userList[8].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -103,7 +103,7 @@ export const ticketList: Ticket[] = [
     title: "CI/CD pipeline improvements",
     description: "Epic: Reduce build time and increase deployment reliability.",
     status: ticketStatus[1],
-    createdBy: userList[17],
+    createdBy: userList[17].id,
     createdIn: new Date(),
     childTickets: [12, 13, 14, 15]
   },
@@ -112,7 +112,7 @@ export const ticketList: Ticket[] = [
     title: "Cache npm dependencies in pipeline",
     description: "Speed up installation using dependency caching.",
     status: ticketStatus[0],
-    createdBy: userList[18],
+    createdBy: userList[18].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -121,7 +121,7 @@ export const ticketList: Ticket[] = [
     title: "Add integration tests step",
     description: "Ensure API and frontend endpoints work after build.",
     status: ticketStatus[1],
-    createdBy: userList[19],
+    createdBy: userList[19].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -130,7 +130,7 @@ export const ticketList: Ticket[] = [
     title: "Create rollback task for production",
     description: "Enable fast rollback with image tagging strategy.",
     status: ticketStatus[0],
-    createdBy: userList[16],
+    createdBy: userList[16].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -139,7 +139,7 @@ export const ticketList: Ticket[] = [
     title: "Parallelize lint and unit tests",
     description: "Reduce execution time by splitting tasks.",
     status: ticketStatus[6],
-    createdBy: userList[13],
+    createdBy: userList[13].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -150,7 +150,7 @@ export const ticketList: Ticket[] = [
     title: "API performance optimization",
     description: "Epic: Improve overall response times for critical endpoints.",
     status: ticketStatus[0],
-    createdBy: userList[9],
+    createdBy: userList[9].id,
     createdIn: new Date(),
     childTickets: [17, 18, 19, 20]
   },
@@ -159,7 +159,7 @@ export const ticketList: Ticket[] = [
     title: "Add Redis caching for product service",
     description: "Cache heavy product queries to reduce DB load.",
     status: ticketStatus[1],
-    createdBy: userList[3],
+    createdBy: userList[3].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -168,7 +168,7 @@ export const ticketList: Ticket[] = [
     title: "Optimize SQL queries in reporting endpoint",
     description: "Remove unnecessary joins and add indexes.",
     status: ticketStatus[0],
-    createdBy: userList[2],
+    createdBy: userList[2].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -177,7 +177,7 @@ export const ticketList: Ticket[] = [
     title: "Benchmark API under load",
     description: "Compare performance before and after optimizations.",
     status: ticketStatus[0],
-    createdBy: userList[1],
+    createdBy: userList[1].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -186,7 +186,7 @@ export const ticketList: Ticket[] = [
     title: "Refactor pagination logic",
     description: "Fix inconsistent results on multi-page responses.",
     status: ticketStatus[6],
-    createdBy: userList[12],
+    createdBy: userList[12].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -197,7 +197,7 @@ export const ticketList: Ticket[] = [
     title: "QA automation suite expansion",
     description: "Epic: Increase test automation coverage.",
     status: ticketStatus[1],
-    createdBy: userList[14],
+    createdBy: userList[14].id,
     createdIn: new Date(),
     childTickets: [22, 23, 24, 25]
   },
@@ -206,7 +206,7 @@ export const ticketList: Ticket[] = [
     title: "Add automated login tests",
     description: "Cover positive and negative login flows.",
     status: ticketStatus[0],
-    createdBy: userList[13],
+    createdBy: userList[13].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -215,7 +215,7 @@ export const ticketList: Ticket[] = [
     title: "Write UI tests for checkout",
     description: "Verify cart, payment and confirmation screens.",
     status: ticketStatus[1],
-    createdBy: userList[15],
+    createdBy: userList[15].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -224,7 +224,7 @@ export const ticketList: Ticket[] = [
     title: "Mock API layer for test isolation",
     description: "Use mock services to stabilize test runs.",
     status: ticketStatus[0],
-    createdBy: userList[16],
+    createdBy: userList[16].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -233,7 +233,7 @@ export const ticketList: Ticket[] = [
     title: "Measure automation test flakiness",
     description: "Collect metrics to identify unstable tests.",
     status: ticketStatus[6],
-    createdBy: userList[14],
+    createdBy: userList[14].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -244,7 +244,7 @@ export const ticketList: Ticket[] = [
     title: "Payment gateway migration",
     description: "Epic: Replace legacy payment provider.",
     status: ticketStatus[1],
-    createdBy: userList[11],
+    createdBy: userList[11].id,
     createdIn: new Date(),
     childTickets: [27, 28, 29, 30]
   },
@@ -253,7 +253,7 @@ export const ticketList: Ticket[] = [
     title: "Integrate new payment API",
     description: "Add endpoints for card and boleto transactions.",
     status: ticketStatus[0],
-    createdBy: userList[10],
+    createdBy: userList[10].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -262,7 +262,7 @@ export const ticketList: Ticket[] = [
     title: "Implement webhook processing",
     description: "Process async payment confirmations and failures.",
     status: ticketStatus[1],
-    createdBy: userList[0],
+    createdBy: userList[0].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -271,7 +271,7 @@ export const ticketList: Ticket[] = [
     title: "Migrate card tokenization flow",
     description: "Move from legacy tokens to encrypted tokens.",
     status: ticketStatus[0],
-    createdBy: userList[9],
+    createdBy: userList[9].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -280,7 +280,7 @@ export const ticketList: Ticket[] = [
     title: "Add payment retry mechanism",
     description: "Retry failed payments respecting idempotency rules.",
     status: ticketStatus[6],
-    createdBy: userList[5],
+    createdBy: userList[5].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -291,7 +291,7 @@ export const ticketList: Ticket[] = [
     title: "Fix memory leak in WebSocket service",
     description: "Investigate event listeners not being unsubscribed.",
     status: ticketStatus[1],
-    createdBy: userList[7],
+    createdBy: userList[7].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -300,7 +300,7 @@ export const ticketList: Ticket[] = [
     title: "Bug: Incorrect total price on checkout",
     description: "Discount rules not being applied correctly.",
     status: ticketStatus[0],
-    createdBy: userList[8],
+    createdBy: userList[8].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -309,7 +309,7 @@ export const ticketList: Ticket[] = [
     title: "Add feature toggle for new dashboard",
     description: "Enable gradual rollout of redesigned dashboard.",
     status: ticketStatus[0],
-    createdBy: userList[9],
+    createdBy: userList[9].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -318,7 +318,7 @@ export const ticketList: Ticket[] = [
     title: "Implement dark mode theme",
     description: "Add toggle and adjust layout for dark mode colors.",
     status: ticketStatus[6],
-    createdBy: userList[3],
+    createdBy: userList[3].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -327,7 +327,7 @@ export const ticketList: Ticket[] = [
     title: "Fix file upload validation error",
     description: "Large files incorrectly trigger 'invalid format'.",
     status: ticketStatus[5],
-    createdBy: userList[1],
+    createdBy: userList[1].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -336,7 +336,7 @@ export const ticketList: Ticket[] = [
     title: "Refactor email notification service",
     description: "Improve delivery reliability and retry logic.",
     status: ticketStatus[1],
-    createdBy: userList[4],
+    createdBy: userList[4].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -345,7 +345,7 @@ export const ticketList: Ticket[] = [
     title: "Improve search relevance algorithm",
     description: "Tune ranking model for more accurate results.",
     status: ticketStatus[0],
-    createdBy: userList[6],
+    createdBy: userList[6].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -354,7 +354,7 @@ export const ticketList: Ticket[] = [
     title: "Log cleanup task",
     description: "Purge old logs and reduce disk usage.",
     status: ticketStatus[6],
-    createdBy: userList[19],
+    createdBy: userList[19].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -363,7 +363,7 @@ export const ticketList: Ticket[] = [
     title: "Fix 500 error in analytics endpoint",
     description: "Null reference in mapping layer.",
     status: ticketStatus[0],
-    createdBy: userList[17],
+    createdBy: userList[17].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -372,7 +372,7 @@ export const ticketList: Ticket[] = [
     title: "Update dependencies to latest versions",
     description: "Upgrade Angular, NestJS, and shared packages.",
     status: ticketStatus[6],
-    createdBy: userList[18],
+    createdBy: userList[18].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -383,7 +383,7 @@ export const ticketList: Ticket[] = [
     title: "Fix inconsistent timezone handling",
     description: "Normalize timezone conversion in backend.",
     status: ticketStatus[1],
-    createdBy: userList[2],
+    createdBy: userList[2].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -392,7 +392,7 @@ export const ticketList: Ticket[] = [
     title: "Create audit log dashboard",
     description: "Display user activity logs for admins.",
     status: ticketStatus[0],
-    createdBy: userList[5],
+    createdBy: userList[5].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -401,7 +401,7 @@ export const ticketList: Ticket[] = [
     title: "Add multi-language support",
     description: "Start with English and Spanish translations.",
     status: ticketStatus[0],
-    createdBy: userList[7],
+    createdBy: userList[7].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -410,7 +410,7 @@ export const ticketList: Ticket[] = [
     title: "Investigate slow DB queries",
     description: "Identify heavy queries and propose optimizations.",
     status: ticketStatus[1],
-    createdBy: userList[8],
+    createdBy: userList[8].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -419,7 +419,7 @@ export const ticketList: Ticket[] = [
     title: "Create internal API documentation",
     description: "Auto-generate docs using Swagger.",
     status: ticketStatus[6],
-    createdBy: userList[10],
+    createdBy: userList[10].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -428,7 +428,7 @@ export const ticketList: Ticket[] = [
     title: "Fix logout redirect issue",
     description: "User session is cleared but redirect fails.",
     status: ticketStatus[0],
-    createdBy: userList[11],
+    createdBy: userList[11].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -437,7 +437,7 @@ export const ticketList: Ticket[] = [
     title: "Enhance logging middleware",
     description: "Add latency measurement and user ID tracing.",
     status: ticketStatus[1],
-    createdBy: userList[13],
+    createdBy: userList[13].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -446,7 +446,7 @@ export const ticketList: Ticket[] = [
     title: "Refactor date formatting utils",
     description: "Standardize date outputs across the app.",
     status: ticketStatus[6],
-    createdBy: userList[14],
+    createdBy: userList[14].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -455,7 +455,7 @@ export const ticketList: Ticket[] = [
     title: "Bug: Chart legends not updating",
     description: "Legends remain outdated after filter changes.",
     status: ticketStatus[0],
-    createdBy: userList[0],
+    createdBy: userList[0].id,
     createdIn: new Date(),
     childTickets: []
   },
@@ -464,7 +464,7 @@ export const ticketList: Ticket[] = [
     title: "Improve accessibility support",
     description: "Add ARIA labels and keyboard navigation.",
     status: ticketStatus[1],
-    createdBy: userList[16],
+    createdBy: userList[16].id,
     createdIn: new Date(),
     childTickets: []
   }
