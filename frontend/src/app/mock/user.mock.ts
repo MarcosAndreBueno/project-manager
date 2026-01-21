@@ -2,28 +2,28 @@ import { User } from "../entities/user";
 import { teamList } from "./team.mock";
 
 export const userList: User[] = [
-  { id: 1,  name: "James",     team: teamList[0] },
-  { id: 2,  name: "Emma",      team: teamList[0] },
-  { id: 3,  name: "Michael",   team: teamList[0] },
-  { id: 4,  name: "Olivia",    team: teamList[0] },
+  { id: 1,  name: "James",     teamId: teamList[0].id },
+  { id: 2,  name: "Emma",      teamId: teamList[0].id },
+  { id: 3,  name: "Michael",   teamId: teamList[0].id },
+  { id: 4,  name: "Olivia",    teamId: teamList[0].id },
 
-  { id: 5,  name: "Liam",      team: teamList[1] },
-  { id: 6,  name: "Sophia",    team: teamList[1] },
-  { id: 7,  name: "Noah",      team: teamList[1] },
-  { id: 8,  name: "Ava",       team: teamList[1] },
+  { id: 5,  name: "Liam",      teamId: teamList[1].id },
+  { id: 6,  name: "Sophia",    teamId: teamList[1].id },
+  { id: 7,  name: "Noah",      teamId: teamList[1].id },
+  { id: 8,  name: "Ava",       teamId: teamList[1].id },
 
-  { id: 9,  name: "Ethan",     team: teamList[2] },
-  { id: 10, name: "Isabella",  team: teamList[2] },
-  { id: 11, name: "Jacob",     team: teamList[2] },
-  { id: 12, name: "Mia",       team: teamList[2] },
+  { id: 9,  name: "Ethan",     teamId: teamList[2].id },
+  { id: 10, name: "Isabella",  teamId: teamList[2].id },
+  { id: 11, name: "Jacob",     teamId: teamList[2].id },
+  { id: 12, name: "Mia",       teamId: teamList[2].id },
 
-  { id: 13, name: "William",   team: teamList[3] },
-  { id: 14, name: "Charlotte", team: teamList[3] },
-  { id: 15, name: "Benjamin",  team: teamList[3] },
-  { id: 16, name: "Amelia",    team: teamList[3] },
+  { id: 13, name: "William",   teamId: teamList[3].id },
+  { id: 14, name: "Charlotte", teamId: teamList[3].id },
+  { id: 15, name: "Benjamin",  teamId: teamList[3].id },
+  { id: 16, name: "Amelia",    teamId: teamList[3].id },
 
-  { id: 17, name: "Lucas",     team: teamList[4] },
-  { id: 18, name: "Harper",    team: teamList[4] },
-  { id: 19, name: "Henry",     team: teamList[4] },
-  { id: 20, name: "Evelyn",    team: teamList[4] },
+  { id: 17, name: "Lucas",     teamId: teamList[4].id },
+  { id: 18, name: "Harper",    teamId: teamList[4].id },
+  { id: 19, name: "Henry",     teamId: teamList[4].id },
+  { id: 20, name: "Evelyn",    teamId: teamList[4].id },
 ];

@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { delay, Observable, switchMap } from 'rxjs';
 import { Team } from '../../../entities/team';
 import { Ticket } from '../../../entities/ticket';
 import { TicketStatus } from '../../../entities/ticket-status';
 import { User } from '../../../entities/user';
-import { ticketStatus } from '../../../mock/ticket-status.mock';
 import { TeamService } from '../../../service/team.service';
 import { UserService } from '../../../service/user.service';
 import { ModelFormGroup } from '../../../utils/model-form-group';
+import { TicketService } from '../../../service/ticket.service';
 
 @Component({
   selector: 'app-ticket-new',
@@ -19,52 +18,51 @@ import { ModelFormGroup } from '../../../utils/model-form-group';
   styleUrl: './ticket-new.component.scss'
 })
 export class TicketNewComponent implements OnInit {
-  public id = 50;
+  public ticketId = 50;
   public today: Date;
   public formattedDate: string;
-
+  public user!: User;
+  public ticketStatus!: TicketStatus;
   public form!: ModelFormGroup<Ticket>;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private teamService: TeamService,
+    private ticketService: TicketService
   ) {
     this.today = new Date();
     this.formattedDate = this.today.toLocaleDateString("pt-BR");
   }
 
   ngOnInit(): void {
-    this.id++;
+    this.ticketId++;
 
     let activeUser: User | null = null;
     let activeUserTeam: Team | null = null;
 
-    //get user then get team from user.team.id
-    this.userService.getUserById(1).subscribe(u => {
-      this.teamService.getTeamsById(u.team.id).subscribe(t => {
-        activeUserTeam = t;
-        //update team
-        this.form.patchValue({
-          createdBy: {
-            team: activeUserTeam
-          }
-        });
-      })
+    // temp
+    const fixedUserId = 1;
 
-      //update user
+    //get user
+    this.userService.getUserById(fixedUserId).subscribe(u => {
+      this.user = u;
+      //update user in form
       this.form.patchValue({
-        createdBy: {
-          id: u.id,
-          name: u.name,
-        }
+        createdBy: u.id
       });
-
     });
+
+    //temp
+    const ticketOpenId = 1;
+
+    //get ticket status
+    this.ticketService.getTicketStatusById(ticketOpenId).subscribe(
+      t => this.ticketStatus = t
+    );
 
     //initializing form
     this.form = this.formBuilder.group({
-      id: new FormControl<number>(this.id),
+      id: new FormControl<number>(this.ticketId),
       title: new FormControl<string>(
         '',
         [
@@ -73,12 +71,8 @@ export class TicketNewComponent implements OnInit {
         ]
       ),
       description: new FormControl<string>(''),
-      status: new FormControl<TicketStatus>(ticketStatus[0]),
-      createdBy: this.formBuilder.group({
-        id: new FormControl<number>(0),
-        name: new FormControl<string>(''),
-        team: new FormControl<Team | null>(null),
-      }),
+      status: new FormControl<TicketStatus | null>(null),
+      createdBy: new FormControl<number | null>(null),
       createdIn: new FormControl<Date>(this.today),
       childTickets: new FormControl<number[]>([]),
     });

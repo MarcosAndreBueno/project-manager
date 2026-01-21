@@ -1,6 +1,5 @@
 package com.projectmanager.user.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -41,11 +40,11 @@ public class User {
         this.name = name;
     }
 
-    public Long getTeam() {
+    public Long getTeamId() {
         return teamId;
     }
 
-    public void setTeam(Long teamId) {
+    public void setTeamId(Long teamId) {
         this.teamId = teamId;
     }
 

@@ -6,6 +6,8 @@ import { Ticket } from '../../../entities/ticket';
 import { TicketStatus } from '../../../entities/ticket-status';
 import { StatusService } from '../../../service/status.service';
 import { TicketService } from '../../../service/ticket.service';
+import { User } from '../../../entities/user';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-ticket-details',
@@ -17,12 +19,14 @@ import { TicketService } from '../../../service/ticket.service';
 export class TicketDetailsComponent implements OnInit {
   public ticket!: Ticket;
   public childTickets$!: Observable<Ticket[]>;
+  public user$!: Observable<User>;
   public statusEnums: TicketStatus[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private ticketService: TicketService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private userService: UserService
   ) {
   }
 
@@ -34,13 +38,12 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   private getTicketDetailsData(id: number): void {
-    this.ticketService.getTicketById(id).subscribe(
-      t => {
-        this.childTickets$ = this.ticketService.getChildTickets(t.childTickets),
-        this.ticket = t;
-      }
-    )
-    
+    this.ticketService.getTicketById(id).subscribe(t => {
+      this.ticket = t;
+      this.childTickets$ = this.ticketService.getChildTickets(t.childTickets);
+      this.user$ = this.userService.getUserById(t.createdBy);
+    });
+
     this.statusService.getStatusEnums().subscribe(
       st => this.statusEnums = st
     );

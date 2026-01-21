@@ -3,22 +3,23 @@
         <div class="col-8">
             @for (team of (teams$ | async); track team.id) {
             <h3 class="mt-3"> {{ team.name }} </h3>
-
-            @if (isTeamWithoutUser(team)) {
-            <div class="mt-3 d-flex">
-                @for (user of (users$ | async); track user.id) {
-                @if (user.team.id == team.id) {
-                <div class="col me-3 border">
-                    <p class="text-center"> {{ user.name }} </p>
-                </div>
+                @if(users.length > 0) {
+                    @if (isTeamFilled(team.id)) {
+                        <div class="mt-3 d-flex">
+                            @for (user of users; track user.id) {
+                                @if (user.teamId == team.id) {
+                                    <div class="col me-3 border">
+                                        <p class="text-center"> {{ user.name }} </p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    } @else {
+                        <div class="col me-3 border">
+                            <p class="text-center"> There is no user in this team. </p>
+                        </div>
+                    }
                 }
-                }
-            </div>
-            } @else {
-                <div class="col me-3 border">
-                    <p class="text-center"> There is no user in this team. </p>
-                </div>
-            }
             }
         </div>
     </div>

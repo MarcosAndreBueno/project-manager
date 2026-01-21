@@ -13,6 +13,6 @@ export class UserConfigurationService {
     constructor(private httpClient: HttpClient) {}
 
     public getUserConfigurations(id: number): Observable<UserConfig> {
-        return this.httpClient.get<UserConfig>(`${this.API}/user-config/${id}`);
+        return this.httpClient.get<UserConfig>(`${this.API}/users/config/${id}`);
     }
 }

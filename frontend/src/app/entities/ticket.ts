@@ -6,7 +6,7 @@ export interface Ticket {
     title: string,
     description: string,
     status: TicketStatus,
-    createdBy: User,
+    createdBy: number,
     createdIn: Date,
     childTickets: number[],
 };

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { forkJoin, map, Observable, of } from "rxjs";
 import { Ticket } from "../entities/ticket";
+import { TicketStatus } from "../entities/ticket-status";
 
 @Injectable({
     providedIn: 'root'
@@ -29,8 +30,12 @@ export class TicketService {
     public getTicketByUserId(id: number): Observable<Ticket[]> {
         return this.getTickets().pipe(
             map(ts => ts.filter(
-                t => t.createdBy.id === id
+                t => t.createdBy === id
             ))
         );
+    }
+
+    public getTicketStatusById(id: number): Observable<TicketStatus> {
+        return this.httpClient.get<TicketStatus>(`${this.API}/tickets/status/${id}`);
     }
 }
